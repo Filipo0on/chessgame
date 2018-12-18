@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class PlayerHistoryComponent extends Component {
-  render() {
+class PlayerHistoryComponent extends React.Component<any, any> {
+  public render() {
     return (
       <div>
         PlayerHistoryComponent
