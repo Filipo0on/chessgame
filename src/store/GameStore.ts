@@ -1,5 +1,5 @@
 import {BehaviorSubject} from 'rxjs';
-//const Chess = require('chess.js').Chess;
+// const Chess = require('chess.js').Chess;
 
 const defaultState = {
   message: 'test',
@@ -11,17 +11,17 @@ class GameStore {
     constructor() {
         this.setState({})
     }
-    setState(st) {
+    public setState(st: any) {
       const val = subject.value;
-      this.state = Object.assign({}, val, st);
-      subject.next(val)
+      const state = Object.assign({}, val, st);
+      subject.next(state)
     }
 
-    getSubject() {
+    public getSubject() {
       return subject;
     }
 
-    updateDemoMessage(payload) {
+    public updateDemoMessage(payload:any) {
       this.setState(payload)
     }
 
