@@ -16,5 +16,3 @@ Make sure all tests and linter are executed correctly
 
 npm runt lint
 npm run test
-
-

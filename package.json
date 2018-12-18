@@ -1,31 +1,29 @@
 {
-  "name": "agile-chess",
+  "name": "chessgamets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reactivex/rxjs": "^6.3.3",
+    "@types/chess.js": "^0.10.0",
     "chess.js": "^0.10.2",
     "chessground": "^7.3.4",
     "react": "^16.6.3",
     "react-chessground": "^1.0.0",
     "react-dom": "^16.6.3",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
+    "react-scripts-ts": "3.1.0",
     "rxjs": "^6.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "./node_modules/eslint/bin/eslint.js src/**/*.js"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.15",
+    "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
+    "typescript": "^3.2.2"
+  }
 }
