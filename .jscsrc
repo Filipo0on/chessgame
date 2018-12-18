@@ -1,0 +1,12 @@
+{
+    "preset": "airbnb",
+    "esnext": true,
+    "disallowTrailingComma": null,
+    "requireTrailingComma": {
+      "ignoreSingleValue": true
+    },
+    "requirePaddingNewLinesAfterBlocks" : null,
+    "requireCamelCaseOrUpperCaseIdentifiers" : null,
+    "validateIndentation" : 2,
+    "esprima" : "esprima-fb"
+  }
