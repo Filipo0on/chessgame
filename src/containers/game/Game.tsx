@@ -15,7 +15,7 @@ import gameStore from "src/store/GameStore";
 import '../../components/game/game.css'
 
 
-class GameComponent extends React.Component<any, any> {
+class Game extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {};
@@ -44,4 +44,4 @@ class GameComponent extends React.Component<any, any> {
   }
 }
 
-export default GameComponent;
+export default Game;
