@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IProps } from 'src/components/game/gameInfo/GameStatus';
 
 export const GameChatInput = styled.input`
     margin-top: auto;
@@ -45,18 +46,32 @@ export const GameChatStyles = styled.article`
     grid-column: 2;
     display:flex;
     flex-direction:column;
-    background: rgba(255,255,255, 0.5);
+    background: rgba(255,255,255, 0.8);
 `;
 
-export const GameNavigationH1 = styled.h1`
+export const GameH1 = styled.h1`
     font-family: 'Roboto', sans-serif;
     font-size: 1.8em;
     font-weight: 100;
     margin: 0;
 `;
-export const GameNavigationH1small = styled.small`
+export const Small = styled.small`
     font-size: 60%;
     font-weight: 100;
     color:#444444;
     margin: 0;
+`;
+export const InfoStyles = styled.article`
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+`;
+
+export const CurrentStatusStyle = styled.div`
+    justify-self:stretch;
+    padding:10px;
+    text-align: center;
+    font-style:italic;
+    font-size: 0.8em;
+    border-left: 3px solid ${(props: IProps) => props.status === 'ACTIVE' ? "green" : "red"};
 `;
