@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const GameChatInput = styled.input`
     border-radius: 3px;
+    margin-top: auto;
+`;
+
+export const GameStyleDiv = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const GameWrapperStyles = styled.section`
