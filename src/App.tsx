@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BrowserRouter as Router , Route} from 'react-router-dom';
+import { BrowserRouter as Router , Route } from 'react-router-dom';
 import Lobby from './containers/lobby/Lobby';
 import Game from './containers/game/Game';
 import './App.css';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
