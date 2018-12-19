@@ -60,3 +60,36 @@ export const GameNavigationH1small = styled.small`
     color:#444444;
     margin: 0;
 `;
+
+export const GamePlayerHistoryDiv = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+export const GamePlayerHistoryPlayerClock = styled.p`
+    height: 12%;
+    width: 50%;
+    background-color: red;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 275%;
+`;
+
+export const GamePlayerHistoryPlayer = styled.p`
+    height: 8%;
+    width: 75%;
+    background-color: blue;
+    margin: 0;
+`;
+
+export const GamePlayerHistoryMove = styled.div`
+    height: 40%;
+    width: 75%;
+    background-color: yellow;
+    overflow-y: auto;
+    word-break: break-all;
+`;
