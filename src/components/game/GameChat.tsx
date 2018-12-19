@@ -7,7 +7,7 @@ class GameChat extends React.Component<any, any> {
     return (
       <GameStyleDiv>
         <GameChatHeader title={'Chattrum'}/>
-        <GameChatInput placeholder={"Vänligen uppträd trevligt i chatten"} />
+        <GameChatInput placeholder={"Vänligen uppträd trevligt i chatten"} type="text" />
       </GameStyleDiv>
     );
   }
