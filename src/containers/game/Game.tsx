@@ -1,11 +1,13 @@
-import * as React from 'react';
+import * as React from "react";
 
-import GameBoardComponent from 'src/components/game/GameBoard';
-import GameChatComponent from 'src/components/game/GameChat';
-import GameInfoComponent from 'src/components/game/GameInfo';
-import PlayerHistoryComponent from 'src/components/game/PlayerHistory';
+import GameBoard from "src/components/game/GameBoard";
+import GameChat from "src/components/game/GameChat";
+import GameInfo from "src/components/game/GameInfo";
+import PlayerHistory from "src/components/game/PlayerHistory";
 
-import gameStore from 'src/store/GameStore';
+import gameStore from "src/store/GameStore";
+
+import { GameWrapperStyles, GameHistoryStyles, GameNavigationStyles, GameChatStyles } from "../../styles/game/Game";
 
 class GameComponent extends React.Component<any, any> {
   constructor(props: any) {
@@ -19,17 +21,19 @@ class GameComponent extends React.Component<any, any> {
   }
   public render() {
     return (
-      <div>
-        <div>
-            <GameChatComponent />
-            <GameBoardComponent />
-            <GameInfoComponent />
-        </div>
-        <div>
-            <PlayerHistoryComponent />
-        </div>
-        <p>Demo-message:{this.state.message}</p>
-      </div>
+      <GameWrapperStyles>
+        <GameNavigationStyles>
+          Navigation | Demo-message:{this.state.message}
+        </GameNavigationStyles>
+        <GameChatStyles>
+          <GameInfo />
+          <GameChat />
+        </GameChatStyles>
+        <GameBoard />
+        <GameHistoryStyles>
+          <PlayerHistory />
+        </GameHistoryStyles>
+      </GameWrapperStyles>
     );
   }
 }
