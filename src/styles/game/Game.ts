@@ -1,4 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+
+export const GameChatInput = styled.input`
+    border-radius: 3px;
+`;
 
 export const GameWrapperStyles = styled.section`
   display: grid;
