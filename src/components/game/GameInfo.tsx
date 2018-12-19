@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-class GameInfoComponent extends React.Component<any, any> {
+class GameInfo extends React.Component<any, any> {
   public render() {
     return "GameInfoComponent"
   }
 }
 
-export default GameInfoComponent;
+export default GameInfo;
