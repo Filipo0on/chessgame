@@ -1,13 +1,9 @@
 import * as React from 'react';
 
-class GameChatComponent extends React.Component<any, any> {
+class GameChat extends React.Component<any, any> {
   public render() {
-    return (
-      <div>
-        GameChatComponent
-      </div>
-    );
+    return "GameChatComponent"
   }
 }
 
-export default GameChatComponent;
+export default GameChat;
