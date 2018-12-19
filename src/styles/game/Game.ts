@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const GameChatInput = styled.input`
-    border-radius: 3px;
     margin-top: auto;
+    padding: 10px;
+    border: none;
 `;
 
 export const GameStyleDiv = styled.div`
