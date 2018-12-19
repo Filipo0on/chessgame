@@ -4,7 +4,6 @@ import Lobby from './containers/lobby/Lobby';
 import Game from './containers/game/Game';
 import './App.css';
 
-// import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
