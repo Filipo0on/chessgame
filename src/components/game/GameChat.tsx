@@ -1,11 +1,13 @@
 import * as React from 'react';
 
+import GameChatHeader from 'src/components/game/GameChatHeader';
+
 class GameChatComponent extends React.Component<any, any> {
   public render() {
     return (
-      <div>
-        GameChatComponent
-      </div>
+      <>
+        <GameChatHeader  title={'Chattrum'}/>
+      </>
     );
   }
 }
