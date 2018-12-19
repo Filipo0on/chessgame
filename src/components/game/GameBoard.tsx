@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-// import { Chessground } from 'chessground' denna importen ska flyttas till fil som gör en react component
+import Chessground from 'src/dist/Chessground';
+
 import 'react-chessground/dist/styles/chessground.css'
 
 class GameBoardComponent extends React.Component<any, any> {
@@ -11,7 +12,7 @@ class GameBoardComponent extends React.Component<any, any> {
     return (
       <div>
         GameBoardComponent
-        {/* <Chessground /> */}
+        <Chessground name="chess" />
       </div>
     );
   }
