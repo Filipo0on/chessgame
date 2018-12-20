@@ -1,25 +1,26 @@
-import * as React from 'react';
-import { CurrentStatusStyle } from 'src/styles/game/Game';
-// import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
+
+const CurrentStatusStyle = styled.div`
+  justify-self: stretch;
+  padding: 10px;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.8em;
+  border-left: 3px solid ${(props: any) => (props.color ? "#0f8224" : "red")};
+`;
 
 export interface IProps {
-    id?: string
+  active: boolean;
 }
 
-// const CurrentStatusStyle = styled.div`
-//     justify-self:stretch;
-//     padding:10px;
-//     text-align: center;
-//     font-style:italic;
-//     font-size: 0.8em;
-//     border-left: 3px solid ${(props: IProps) => props.status === 'ACTIVE' ? "green" : "red" };
-// `;
+const GameStatus: React.SFC<IProps> = props => {
+  const borderColor = props.active ? "#0f8224" : "red";
+  const gameStatus = props.active ? "Ongoing game" : "Game ended";
 
-const GameStatus: React.SFC<IProps> = (props) => {
+  return (
+    <CurrentStatusStyle color={borderColor}>{gameStatus}</CurrentStatusStyle>
+  );
+};
 
-    return (
-        <CurrentStatusStyle id={props.id}>hej</CurrentStatusStyle>
-    )
-}
-
-export default GameStatus
+export default GameStatus;
