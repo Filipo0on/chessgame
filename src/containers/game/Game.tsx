@@ -14,7 +14,7 @@ import gameStore from "src/store/GameStore";
 
 import '../../components/game/game.css'
 
-
+// this file should get props, creator, oponent, game id, time stuff from lobby.
 class Game extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -31,13 +31,13 @@ class Game extends React.Component<any, any> {
         <GameNavigationStyles>
           <GameH1>Navigation | <Small>Demo-message:{this.state.message}</Small></GameH1>
         </GameNavigationStyles>
-        <GameChatStyles>
-          <GameInfo />
-          <GameChat />
+        <GameChatStyles> 
+          <GameInfo /> {/* This component needs to get player names as well as current game status*/}
+          <GameChat /> {/* This component needs to get player names */}
         </GameChatStyles>
-        <GameBoard />
+        <GameBoard />  {/*  Only logig, needs to send data up to parent component ? */}
         <GameHistoryStyles>
-          <PlayerHistory />
+          <PlayerHistory />  {/*  Needs to get moves data, player data, time data from ongoing game and lobby */}
         </GameHistoryStyles>
       </GameWrapperStyles>
     );
