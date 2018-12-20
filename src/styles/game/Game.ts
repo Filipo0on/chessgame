@@ -66,12 +66,12 @@ export const GamePlayerHistoryDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 `;
 
 export const GamePlayerHistoryPlayerClock = styled.p`
     height: 12%;
-    width: 50%;
-    background-color: red;
+    width: 85%;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -81,15 +81,45 @@ export const GamePlayerHistoryPlayerClock = styled.p`
 
 export const GamePlayerHistoryPlayer = styled.p`
     height: 8%;
-    width: 75%;
-    background-color: blue;
+    width: 85%;
     margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    padding: 15px;
 `;
 
-export const GamePlayerHistoryMove = styled.div`
-    height: 40%;
-    width: 75%;
-    background-color: yellow;
+export const GamePlayerHistory = styled.div`
+    min-height: 36%;
+    max-height: 36%;
+    width: 85%;
+    display: flex;
     overflow-y: auto;
     word-break: break-all;
+`;
+
+export const GamePlayerHistoryPlayers = styled.div`
+    width: 45%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const GamePlayerHistoryPlayersMove = styled.p`
+    margin: 0;
+    padding: 4px;
+`;
+
+export const GamePlayerHistoryRounds = styled.div`
+    height: 100%;
+    width: 13%;
+    text-align: center;
+`;
+
+export const GamePlayerRound = styled.p`
+    margin: 0;
+    padding: 4px;
+    background-color: gainsboro;
 `;
