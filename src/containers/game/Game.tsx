@@ -8,8 +8,8 @@ import { GameWrapperStyles,
   GameHistoryStyles, 
   GameNavigationStyles, 
   GameChatStyles, 
-  GameNavigationH1, 
-  GameNavigationH1small } from "../../styles/game/Game";
+  GameH1, 
+  Small } from "../../styles/game/Game";
 import gameStore from "src/store/GameStore";
 
 import '../../components/game/game.css'
@@ -29,7 +29,7 @@ class Game extends React.Component<any, any> {
     return (
       <GameWrapperStyles>
         <GameNavigationStyles>
-          <GameNavigationH1>Navigation | <GameNavigationH1small>Demo-message:{this.state.message}</GameNavigationH1small></GameNavigationH1>
+          <GameH1>Navigation | <Small>Demo-message:{this.state.message}</Small></GameH1>
         </GameNavigationStyles>
         <GameChatStyles>
           <GameInfo />

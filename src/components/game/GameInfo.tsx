@@ -1,8 +1,15 @@
 import * as React from 'react';
+import GameStatus from './gameInfo/GameStatus'
+import { InfoStyles } from "../../styles/game/Game";
 
 class GameInfo extends React.Component<any, any> {
   public render() {
-    return "GameInfoComponent"
+    return (
+      <InfoStyles>
+        <GameStatus id={'1'} />
+        {/* <GameWinner /> */}
+      </InfoStyles>
+      )
   }
 }
 
