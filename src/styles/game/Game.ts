@@ -75,3 +75,12 @@ export const CurrentStatusStyle = styled.div`
     font-size: 0.8em;
     border-left: 3px solid ${(props: IProps) => props.id ? '#0f8224' : 'red'};
 `;
+
+export const GameChatH3 = styled.h3`
+    text-align: center;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.68);
+    padding: 10px;
+    margin: 0;
+    letter-spacing: 1px;
+`;
