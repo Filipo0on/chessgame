@@ -26,7 +26,7 @@ export const GameNavigationStyles = styled.section`
     grid-column: span 5;
     justify-self: stretch;
     padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.8);
 `;
 
 export const GameBoardStyles = styled.article`
@@ -72,5 +72,5 @@ export const CurrentStatusStyle = styled.div`
     text-align: center;
     font-style:italic;
     font-size: 0.8em;
-    border-left: 3px solid ${(props: IProps) => props.status === 'ACTIVE' ? "green" : "red"};
+    border-left: 3px solid ${(props: IProps) => props.id ? '#0f8224' : 'red'};
 `;

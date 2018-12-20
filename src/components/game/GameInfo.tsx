@@ -6,7 +6,7 @@ class GameInfoComponent extends React.Component<any, any> {
   public render() {
     return (
       <InfoStyles>
-        <GameStatus status={"ACTIVE"} />
+        <GameStatus id={'1'} />
         {/* <GameWinner /> */}
       </InfoStyles>
       )

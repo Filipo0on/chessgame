@@ -3,7 +3,7 @@ import { CurrentStatusStyle } from 'src/styles/game/Game';
 // import styled from 'styled-components';
 
 export interface IProps {
-    status: 'ACTIVE' | 'DRAW' | 'CLOSED'
+    id?: string
 }
 
 // const CurrentStatusStyle = styled.div`
@@ -15,8 +15,11 @@ export interface IProps {
 //     border-left: 3px solid ${(props: IProps) => props.status === 'ACTIVE' ? "green" : "red" };
 // `;
 
-const GameStatus: React.SFC<IProps> = (props) => (
-    <CurrentStatusStyle status={props.status}>{props.status}</CurrentStatusStyle>
-)
+const GameStatus: React.SFC<IProps> = (props) => {
+
+    return (
+        <CurrentStatusStyle id={props.id}>hej</CurrentStatusStyle>
+    )
+}
 
 export default GameStatus
