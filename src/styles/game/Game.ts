@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { IProps } from 'src/components/game/gameInfo/GameStatus';
 
 export const GameChatInput = styled.input`
     margin-top: auto;
@@ -66,16 +65,6 @@ export const InfoStyles = styled.article`
     flex-direction: column;
     justify-items: flex-start;
 `;
-
-export const CurrentStatusStyle = styled.div`
-    justify-self:stretch;
-    padding:10px;
-    text-align: center;
-    font-style:italic;
-    font-size: 0.8em;
-    border-left: 3px solid ${(props: IProps) => props.id ? '#0f8224' : 'red'};
-`;
-
 export const GameChatH3 = styled.h3`
     text-align: center;
     font-size: 1.2em;
