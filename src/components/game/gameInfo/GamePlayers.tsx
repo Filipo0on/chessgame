@@ -10,7 +10,7 @@ const PlayerContainer = styled.section`
 
 `;
 
-const Player = styled(PlayerContainer)`
+const Player = styled(PlayerContainer)` 
   flex-direction:row;
   align-items:center;
   margin: 0 0 5px 0;

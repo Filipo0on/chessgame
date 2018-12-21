@@ -8,7 +8,7 @@ class GameInfo extends React.Component<IGamePlayerProps & IGameProps, any> {
   public render() {
     return (
       <InfoStyles>
-        <GameStatus active={this.props.game.active} />
+        <GameStatus active={true} />
         {/* <GameWinner /> TO BE IMPLEMENTED */}
         <GamePlayers
           creator={this.props.creator}

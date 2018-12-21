@@ -1,0 +1,164 @@
+{
+    "CreatedGames": [{
+            "gameId": 1,
+            "creator": 1,
+            "creatorColor": "white",
+            "opponent": 2,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 2,
+            "creator": 8,
+            "creatorColor": "black",
+            "opponent": 10,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 3,
+            "creator": 3,
+            "creatorColor": "black",
+            "opponent": 4,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 4,
+            "creator": 2,
+            "creatorColor": "white",
+            "opponent": 1,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 5,
+            "creator": 5,
+            "creatorColor": "white",
+            "opponent": 1,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 6,
+            "creator": 9,
+            "creatorColor": "black",
+            "opponent": 5,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 7,
+            "creator": 10,
+            "creatorColor": "white",
+            "opponent": 9,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 8,
+            "creator": 1,
+            "creatorColor": "black",
+            "opponent": 2,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 9,
+            "creator": 4,
+            "creatorColor": "black",
+            "opponent": 8,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        },
+        {
+            "gameId": 10,
+            "creator": 6,
+            "creatorColor": "black",
+            "opponent": 8,
+            "opponentColor": "black",
+            "gameType": "Classic",
+            "gameTime": 5,
+            "gameAddTime": 15,
+            "gameStarted": false
+        }
+    ],
+    "Players": [{
+            "userId": 1,
+            "userName": "Anonymous",
+            "myActiveGames": [1, 4, 5, 8]
+        },
+        {
+            "userId": 2,
+            "userName": "Anonymous",
+            "myActiveGames": [4, 1, 8]
+        },
+        {
+            "userId": 3,
+            "userName": "Anonymous",
+            "myActiveGames": [3]
+        },
+        {
+            "userId": 4,
+            "userName": "Anonymous",
+            "myActiveGames": [9, 7]
+        },
+        {
+            "userId": 5,
+            "userName": "Anonymous",
+            "myActiveGames": [5, 6]
+        },
+        {
+            "userId": 6,
+            "userName": "Anonymous",
+            "myActiveGames": [10]
+        },
+        {
+            "userId": 7,
+            "userName": "Anonymous",
+            "myActiveGames": []
+        },
+        {
+            "userId": 8,
+            "userName": "Anonymous",
+            "myActiveGames": [2, 9, 10]
+        },
+        {
+            "userId": 9,
+            "userName": "Anonymous",
+            "myActiveGames": [6, 7]
+        },
+        {
+            "userId": 10,
+            "userName": "Anonymous",
+            "myActiveGames": [7, 2]
+        }
+    ]
+}

@@ -7,7 +7,7 @@ const CurrentStatusStyle = styled.div`
   text-align: center;
   font-style: italic;
   font-size: 0.8em;
-  border-left: 3px solid ${(props: any) => (props.color ? "#0f8224" : "red")};
+  border-left: 6px solid ${(props: any) => (props.color ? "#0f8224" : "red")};
 `;
 
 export interface IProps {
