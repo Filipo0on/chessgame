@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 import * as React from 'react';
 import { GamePlayerHistoryDiv , 
          GamePlayerHistoryPlayerClock , 
@@ -10,6 +11,23 @@ import { GamePlayerHistoryDiv ,
 
 class PlayerHistory extends React.Component<any, any> {
   public render() {
+    const moves = [{ color: 'w', from: 'e2', to: 'e4', flags: 'b', piece: 'p', san: 'e4' },
+                   { color: 'b', from: 'e7', to: 'e5', flags: 'b', piece: 'p', san: 'e5' },
+                   { color: 'w', from: 'f2', to: 'f4', flags: 'b', piece: 'p', san: 'f4' },
+                   { color: 'b', from: 'e5', to: 'f4', flags: 'c', piece: 'p', captured: 'p', san: 'exf4' }];
+                   
+    const moveMadeWhite = moves.filter(move => move.color === 'w' ? move.to : false);
+
+    const moveMadeBlack = moves.filter(move => move.color === 'b' ? move.to : false);
+
+    const displayWhiteMoves = moveMadeWhite.map((move, index) => {
+      return <GamePlayerHistoryPlayersMove key={index.toString()}>{move.to}</GamePlayerHistoryPlayersMove>
+    })
+
+    const displayBlackMoves = moveMadeBlack.map((move, index) => {
+      return <GamePlayerHistoryPlayersMove key={index.toString()}>{move.to}</GamePlayerHistoryPlayersMove>
+    })
+    
     return (
       <GamePlayerHistoryDiv>
         <GamePlayerHistoryPlayerClock>
@@ -32,27 +50,10 @@ class PlayerHistory extends React.Component<any, any> {
             <GamePlayerRound>10</GamePlayerRound>
           </GamePlayerHistoryRounds>
           <GamePlayerHistoryPlayers>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>e4</GamePlayerHistoryPlayersMove>
+           {displayWhiteMoves}
           </GamePlayerHistoryPlayers>
           <GamePlayerHistoryPlayers>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
-            <GamePlayerHistoryPlayersMove>d3</GamePlayerHistoryPlayersMove>
+           {displayBlackMoves}
           </GamePlayerHistoryPlayers>
         </GamePlayerHistory>
         <GamePlayerHistoryPlayer>
