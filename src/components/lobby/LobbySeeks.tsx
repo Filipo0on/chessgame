@@ -60,10 +60,12 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
     console.log("created games",CreatedGames)
     const Games = CreatedGames;
 
-const LiatOfGames = Games.map(Game => {
+const ListOfGames = Games.map(Game => {
 return (
   <div key={Game.gameId}>
-    <h1>{Game.creator}</h1>
+    <h3>{Game.creator}</h3>
+     {/* <p>{Game.opponent}</p> */}
+    <p>{Game.gameType}</p>
   </div>
 );
 });
@@ -72,9 +74,9 @@ return (
 
     return (
       <Container>
-          {LiatOfGames}
+        {ListOfGames}
           <ListItemMatch>
-            <MatchInfo>{this.state.Player}</MatchInfo>           
+            <MatchInfo>{this.state.Player} </MatchInfo>           
             <JoinBTN>Join Game</JoinBTN>
           </ListItemMatch>
           <ListItemMatch>

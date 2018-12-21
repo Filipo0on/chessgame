@@ -16,15 +16,15 @@ export const players =  [
 
 export const CreatedGames =  [
 
-    {creator : "Anonymous" ,gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 3, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 4, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 5, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 6, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 7, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 8, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 9, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
-    {creator : "Anonymous" ,gameId : 10, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 3, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 4, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 5, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 6, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 7, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 8, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 9, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 10, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
  
 ];

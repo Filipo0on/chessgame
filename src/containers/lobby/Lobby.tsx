@@ -16,13 +16,9 @@ const MainContainer = styled.div`
   height: 100Vh;
   display: grid;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: 120px auto 120px;
- 
- 
+  grid-template-rows: 120px auto 120px; 
 ` 
-
-
-class LobbyComponent extends React.Component<any, any> {
+class Lobby extends React.Component<any, any> {
   public render() {
     return (
         <MainContainer>
@@ -36,4 +32,4 @@ class LobbyComponent extends React.Component<any, any> {
   }
 }
 
-export default LobbyComponent;
+export default Lobby;
