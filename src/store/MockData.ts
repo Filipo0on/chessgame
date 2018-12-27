@@ -16,7 +16,7 @@ export const players =  [
 
 export const CreatedGames =  [
 
-    {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
+    {creator : "Lenart", creatorColor: "",  opponent : "Berit", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
     {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
     {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 3, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},
     {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 4, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false},

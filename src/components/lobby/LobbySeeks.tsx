@@ -19,7 +19,7 @@ box-shadow: 5px 5px 30px black, -5px -3px 30px black;
 `
 const ListItemMatch = styled.div `
 display: grid;
-grid-template-columns: 70% 30%;§
+grid-template-columns: 70% 30%;
 border-bottom: 1px solid black;
 padding: 20px 15px;
 place-items: baseline;
@@ -63,11 +63,12 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
 
 const ListOfGames = Games.map(Game => {
 return (
-  <div key={Game.gameId}>
-    <h3>{Game.creator}</h3>
+  <ListItemMatch key={Game.gameId}>
+    <MatchInfo>{Game.creator}</MatchInfo>
      {/* <p>{Game.opponent}</p> */}
-    <p>{Game.gameType}</p>
-  </div>
+     
+    <JoinBTN>Join</JoinBTN>
+  </ListItemMatch>
 );
 });
    
@@ -76,18 +77,6 @@ return (
     return (
       <Container>
         {ListOfGames}
-          <ListItemMatch>
-            <MatchInfo>{this.state.Player} </MatchInfo>           
-            <JoinBTN>Join Game</JoinBTN>
-          </ListItemMatch>
-          <ListItemMatch>
-            <MatchInfo>Player</MatchInfo>           
-            <JoinBTN>Join Game</JoinBTN>
-          </ListItemMatch>
-          <ListItemMatch>
-            <MatchInfo>Player</MatchInfo>           
-            <JoinBTN>Join Game</JoinBTN>
-          </ListItemMatch>         
       </Container>
     );
   }
