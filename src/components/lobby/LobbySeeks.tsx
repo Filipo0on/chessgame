@@ -10,8 +10,9 @@ grid-column-end: 3;
 grid-row-start: 2;
 grid-row-end: 3;
 background-color: white;
-border-radius: 10px;
 opacity: 0.8;
+height: 650px;
+overflow-y: scroll;
 padding: 50px 40px 0px 40px;
 box-shadow: 5px 5px 30px black, -5px -3px 30px black;
   
