@@ -16,7 +16,7 @@ export const GameStyleDiv = styled.div`
 export const GameWrapperStyles = styled.section`
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-template-columns: repeat(5, minmax(auto, 1fr));
+  grid-template-columns: 100px 1fr 515px 1fr 100px;
   grid-gap: 20px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.99em;
