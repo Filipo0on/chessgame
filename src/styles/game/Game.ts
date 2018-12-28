@@ -94,6 +94,8 @@ export const GamePlayerHistory = styled.div`
     max-height: 36%;
     width: 85%;
     display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
     overflow-y: auto;
     word-break: break-all;
 `;
@@ -113,8 +115,12 @@ export const GamePlayerHistoryPlayersMove = styled.p`
 `;
 
 export const GamePlayerHistoryRounds = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
     height: 100%;
-    width: 13%;
+    width: 100%;
     text-align: center;
 `;
 
