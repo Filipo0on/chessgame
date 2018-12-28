@@ -9,11 +9,13 @@ const ChatContainer = styled.div`
   max-height: 439px;
   display: flex;
   flex-direction: column;
+  
 `;
-const ChatMessageList = styled(ChatContainer)`
-  height:309px;
+const ChatMessageList = styled.div`
   max-height:309px;
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding:10px 10px;
   overflow-y: auto;
 `;
@@ -61,6 +63,18 @@ class GameChat extends React.Component<any, any> {
     inputValue: '',
     chatMessages: []
   }
+  // public av: any;
+  // public componentDidMount() {
+  //   this.scrollToBottom();
+  // }
+
+  // public componentDidUpdate() {
+  //   this.scrollToBottom();
+  // }
+
+  // public scrollToBottom = () => {
+  //   this.av.scrollIntoView({ behavior: 'smooth' });
+  // }
   public onSubmitChat = (event: any) => {
     if (event.key === 'Enter') {
       return this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat(this.state.inputValue), inputValue: ''}))
@@ -80,6 +94,7 @@ class GameChat extends React.Component<any, any> {
         <GameChatHeader title={'Game chat'}/>
         <ChatMessageList>
           {messages}
+          {/* <div ref={(av: any) => { this.av = av; }} /> */}
         </ChatMessageList>
         <ChatEventContainer>
           <ChatInput 
@@ -88,7 +103,6 @@ class GameChat extends React.Component<any, any> {
             onChange={this.handleInputValue}
             onKeyPress={this.onSubmitChat}
           />
-          {/* <SendMessage onClick={this.onSubmitChat}>Go</SendMessage> */}
         </ChatEventContainer>
         <ChatQuickMsg>
           <QuickMsg text={"God Morgon!"} handleQuickMsg={this.handleQuickMsg} />
