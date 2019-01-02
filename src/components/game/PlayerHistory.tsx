@@ -8,6 +8,7 @@ import { GamePlayerHistoryDiv ,
          GamePlayerHistoryPlayersMove,
          GamePlayerHistoryRounds,
          GamePlayerRound } from '../../styles/game/Game';
+import GamePlayerClock from './GamePlayerClock';
 
 class PlayerHistory extends React.Component<any, any> {
   public render() {
@@ -40,7 +41,7 @@ class PlayerHistory extends React.Component<any, any> {
     return (
       <GamePlayerHistoryDiv>
         <GamePlayerHistoryPlayerClock>
-          05:00
+          <GamePlayerClock />
         </GamePlayerHistoryPlayerClock>
         <GamePlayerHistoryPlayer>
           Motståndare
@@ -57,7 +58,7 @@ class PlayerHistory extends React.Component<any, any> {
           Medspelare
         </GamePlayerHistoryPlayer>
         <GamePlayerHistoryPlayerClock>
-          05:00
+        <GamePlayerClock />
         </GamePlayerHistoryPlayerClock>
       </GamePlayerHistoryDiv>
     );
