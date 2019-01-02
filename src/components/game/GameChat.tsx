@@ -9,7 +9,8 @@ const ChatContainer = styled.div`
   max-height: 439px;
   display: flex;
   flex-direction: column;
-  
+  margin: 10px 10px 10px 10px;
+  border: 1px solid gray;
 `;
 const ChatMessageList = styled.div`
   max-height:309px;
@@ -21,10 +22,11 @@ const ChatMessageList = styled.div`
 `;
 const ChatEventContainer = styled(ChatContainer)`
   height: 10%;
-  margin-top: auto;
+  margin: auto 0 0 0;
   flex-direction:row;
   justify-content: flex-start;
   box-sizing: border-box;
+  border: none;
 `;
 const ChatParagraph = styled.p`
   width:100%;
@@ -36,10 +38,12 @@ const ChatParagraph = styled.p`
 `;
 const ChatQuickMsg = styled(ChatContainer)`
   width:100%;
-  height:10%;
+  height:7%;
   flex-direction:row;
   justify-content: flex-start;
   box-sizing: border-box;
+  margin:0;
+  border: none;
 `;
 // const SendMessage = styled.button`
 //   width:20%;
@@ -56,6 +60,7 @@ const ChatInput = styled.input`
   padding: 10px;
   border: none;
   box-sizing: border-box;
+  margin:0;
 `;
 
 class GameChat extends React.Component<any, any> {
@@ -63,18 +68,18 @@ class GameChat extends React.Component<any, any> {
     inputValue: '',
     chatMessages: []
   }
-  // public av: any;
-  // public componentDidMount() {
-  //   this.scrollToBottom();
-  // }
+  public av: any;
+  public componentDidMount() {
+    this.scrollToBottom();
+  }
 
-  // public componentDidUpdate() {
-  //   this.scrollToBottom();
-  // }
+  public componentDidUpdate() {
+    this.scrollToBottom();
+  }
 
-  // public scrollToBottom = () => {
-  //   this.av.scrollIntoView({ behavior: 'smooth' });
-  // }
+  public scrollToBottom = () => {
+    this.av.scrollIntoView({ behavior: 'smooth' });
+  }
   public onSubmitChat = (event: any) => {
     if (event.key === 'Enter') {
       return this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat(this.state.inputValue), inputValue: ''}))
@@ -94,19 +99,21 @@ class GameChat extends React.Component<any, any> {
         <GameChatHeader title={'Game chat'}/>
         <ChatMessageList>
           {messages}
-          {/* <div ref={(av: any) => { this.av = av; }} /> */}
+          <div ref={(av: any) => { this.av = av; }} />
         </ChatMessageList>
         <ChatEventContainer>
           <ChatInput 
-            placeholder={"Vänligen uppträd trevligt i chatten"} type="text" 
+            placeholder={"Please behave appropriately in this chat!"} type="text" 
             value={this.state.inputValue}
             onChange={this.handleInputValue}
             onKeyPress={this.onSubmitChat}
           />
         </ChatEventContainer>
         <ChatQuickMsg>
-          <QuickMsg text={"God Morgon!"} handleQuickMsg={this.handleQuickMsg} />
-          <QuickMsg text={"Bra match"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Greetings!"} short={"Greeting"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Nice job!"} short ={"NJ"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"I got you now!"} short={"IGYN"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Check mate!"} short ={"CM"} handleQuickMsg={this.handleQuickMsg} />
         </ChatQuickMsg>
       </ChatContainer>
     );

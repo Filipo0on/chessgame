@@ -13,16 +13,18 @@ const QuickMsgStyle = styled.div`
   color: white;
   font-weight: bold;
   cursor: pointer;
+  font-size:0.7em;
 `;
 
 export interface IProps {
   text: string,
+  short: string,
   handleQuickMsg(text: any): any
 }
 
 const GameStatus: React.SFC<IProps> = props => {
   return (
-    <QuickMsgStyle onClick={() => props.handleQuickMsg(props.text)}>{props.text}</QuickMsgStyle>
+    <QuickMsgStyle onClick={() => props.handleQuickMsg(props.text)}>{props.short}</QuickMsgStyle>
   );
 };
 
