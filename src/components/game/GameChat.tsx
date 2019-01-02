@@ -1,5 +1,6 @@
 // tslint:disable:no-console
 import * as React from 'react';
+import * as moment from 'moment'
 import styled from 'styled-components';
 import GameChatHeader from 'src/components/game/GameChatHeader';
 import QuickMsg from './QuickMsg'
@@ -28,7 +29,7 @@ const ChatEventContainer = styled(ChatContainer)`
   box-sizing: border-box;
   border: none;
 `;
-const ChatParagraph = styled.p`
+const ChatParagraph = styled.div`
   width:100%;
   text-align:left;
   &:nth-child(even) {
@@ -82,17 +83,22 @@ class GameChat extends React.Component<any, any> {
   }
   public onSubmitChat = (event: any) => {
     if (event.key === 'Enter') {
-      return this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat(this.state.inputValue), inputValue: ''}))
+      return this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat({text: this.state.inputValue, date: new Date()}), inputValue: ''}))
     }
   }
 
   public handleInputValue = (event: any) => this.setState({inputValue: event.target.value})
 
-  public handleQuickMsg = (text: string) => this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat(text)}))
+  public handleQuickMsg = (text: string) => this.setState((prevState: any) => ({chatMessages: prevState.chatMessages.concat({text, date: new Date()})}))
 
   public render() {
     const messages = this.state.chatMessages.map((msg: any, i: any) => {
-      return <ChatParagraph key={i}>{msg}</ChatParagraph>
+      return <ChatParagraph key={i}>
+              <span style={{fontStyle: 'italic', fontSize: '0.6em'}}>
+                {moment(msg.date).format('hh:mm:ss DD MMM, YYYY')}
+              </span>
+              <p style={{margin: '0'}}>{msg.text}</p>
+            </ChatParagraph>
     })
     return (
       <ChatContainer>
@@ -103,17 +109,17 @@ class GameChat extends React.Component<any, any> {
         </ChatMessageList>
         <ChatEventContainer>
           <ChatInput 
-            placeholder={"Please behave appropriately in this chat!"} type="text" 
+            placeholder={"Please behave!"} type="text" 
             value={this.state.inputValue}
             onChange={this.handleInputValue}
             onKeyPress={this.onSubmitChat}
           />
         </ChatEventContainer>
         <ChatQuickMsg>
-          <QuickMsg text={"Greetings!"} short={"Greeting"} handleQuickMsg={this.handleQuickMsg} />
-          <QuickMsg text={"Nice job!"} short ={"NJ"} handleQuickMsg={this.handleQuickMsg} />
-          <QuickMsg text={"I got you now!"} short={"IGYN"} handleQuickMsg={this.handleQuickMsg} />
-          <QuickMsg text={"Check mate!"} short ={"CM"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Greetings!"} short={"GREETING"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Nice job!"} short ={"PRAISE"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"I got you now!"} short={"TAUNT"} handleQuickMsg={this.handleQuickMsg} />
+          <QuickMsg text={"Check mate!"} short ={"GAMEOVER"} handleQuickMsg={this.handleQuickMsg} />
         </ChatQuickMsg>
       </ChatContainer>
     );
