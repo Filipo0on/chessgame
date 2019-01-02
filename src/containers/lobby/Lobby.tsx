@@ -15,8 +15,8 @@ const MainContainer = styled.div`
   margin: 0; 
   height: 100Vh;
   display: grid;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 120px auto 120px; 
+  grid-template-columns: 5% 85% 5%;
+  grid-template-rows: 10% 80% 10%; 
 ` 
 class Lobby extends React.Component<any, any> {
   public render() {

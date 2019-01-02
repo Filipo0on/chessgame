@@ -13,7 +13,7 @@ class App extends React.Component {
         <div>
           <Route path='/' exact={true} component={Lobby} />
           <Route path='/game/:id' component={Game} />
-          <Route path='/await/05' component={AwaitGame} />
+          <Route path='/await/:id' component={AwaitGame} />
         </div>
       </Router>
     );

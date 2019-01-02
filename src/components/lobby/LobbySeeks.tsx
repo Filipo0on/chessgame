@@ -11,7 +11,7 @@ grid-row-start: 2;
 grid-row-end: 3;
 background-color: white;
 opacity: 0.8;
-height: 650px;
+height: auto;
 overflow-y: scroll;
 padding: 50px 40px 0px 40px;
 box-shadow: 5px 5px 30px black, -5px -3px 30px black;
@@ -71,11 +71,8 @@ return (
   </ListItemMatch>
 );
 });
-   
-
-
     return (
-      <Container>
+      <Container>        
         {ListOfGames}
       </Container>
     );
