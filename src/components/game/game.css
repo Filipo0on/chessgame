@@ -1,9 +1,0 @@
-body {
-    background-image: url('../../dist/images/chess-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-origin: content-box;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-}
