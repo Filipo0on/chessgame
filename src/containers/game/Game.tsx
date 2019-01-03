@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 import * as React from "react";
 
 import GameBoard from "src/components/game/GameBoard";
@@ -13,8 +14,9 @@ import {
   Small
 } from "../../styles/game/Game";
 import gameStore from "src/store/GameStore";
-
 import "../../components/game/game.css";
+const Chess = require('chess.js').Chess;
+
 
 // this file should get props, creator, oponent, game id, time stuff from lobby.
 const fakeGame = {
@@ -28,6 +30,7 @@ const fakeGame = {
   gameAddTime: 15,
   gameStarted: true
 };
+
 class Game extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -39,6 +42,20 @@ class Game extends React.Component<any, any> {
     });
   }
   public render() {
+
+    console.log('Chess', Chess);
+    const chess = new Chess()
+    console.log('chess', chess);
+
+    //   while (!chess.game_over()) {
+      //     const moves = chess.moves();
+  //     const move = moves[Math.floor(Math.random() * moves.length)];
+  //     chess.move(move);
+  // }
+  // console.log(chess.pgn());
+
+
+    
     const creator = { name: fakeGame.creator, piece: fakeGame.creatorColor };
     const opponent = { name: fakeGame.opponent, piece: fakeGame.opponentColor };
     const game = {
@@ -57,7 +74,7 @@ class Game extends React.Component<any, any> {
           <GameInfo creator={creator} opponent={opponent} game={game} />
           <GameChat creator={creator.name} opponent={opponent.name}/>
         </GameChatStyles>
-        <GameBoard /> {/*  Only logig, needs to send data up to parent component ? */}
+        <GameBoard  /> {/*  Only logig, needs to send data up to parent component ? */}
         <GameHistoryStyles>
           <PlayerHistory /> {/*  Needs to get moves data, player data, time data from ongoing game and lobby */}
         </GameHistoryStyles>
