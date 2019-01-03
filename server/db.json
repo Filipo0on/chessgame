@@ -1,0 +1,18 @@
+{
+    "games": [
+        {
+            "id": 1, 
+            "gameType": "Classic", 
+            "gameTime": "5", 
+            "gameAddTime": "15", 
+            "gameStarted": false
+        },
+        {
+            "id": 2, 
+            "gameType": "Classic", 
+            "gameTime": "5", 
+            "gameAddTime": "15", 
+            "gameStarted": false
+        }
+    ]
+  }
