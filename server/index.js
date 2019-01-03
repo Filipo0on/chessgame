@@ -29,15 +29,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    games: [Game]
-    players: [Player]
+    getGames: [Game]
+    getPlayers: [Player]
   }
 `;
 
 const resolvers = {
   Query: {
-    games: () => games,
-    players: () => players,
+    getGames: () => games,
+    getPlayers: () => players,
   },
 };
 
