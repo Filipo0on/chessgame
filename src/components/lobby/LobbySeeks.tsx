@@ -12,7 +12,7 @@ opacity: 0.8;
 height: auto;
 width: auto;
 overflow-y: scroll;
-padding: 50px 40px 0px 40px;
+padding: 30px 40px 0px 40px;
 box-shadow: 5px 5px 30px black, -5px -3px 30px black;
   
 `
@@ -22,6 +22,9 @@ grid-template-columns: 20% 20% 20% 20% 20%;
 border-bottom: 1px solid black;
 padding: 20px 15px;
 place-items: baseline;
+&:last-of-type{
+  border-bottom: none;
+}
 `
 const JoinBTN = styled.button `
 justify-self: end;
@@ -45,6 +48,7 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
       Player: "kalle",
     };
 }
+// function id from match routar oppoenent till rätt /await/gameID sida
   public render() {
     console.log("created games",CreatedGames)
     const Games = CreatedGames;
