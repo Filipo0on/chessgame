@@ -37,6 +37,7 @@ const Row = styled.div`
 box-sizing: border-box;
 color: #505050;
 display: flex;
+flex:1;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
@@ -143,11 +144,12 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
   }
   gameValue = {gameType, gameTime, addedTime, creatorPiece, opponentPiece, creatorId};
 }
-  public createGame(){
+  /* public createGame(){
     // tslint:disable:no-console
+    
     console.log(gameValue);
     
-  }
+  } */
 
   public render() {
     const gameTypes = [
@@ -193,15 +195,15 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
           </Row>
           <Row>
           <p>Minutes per player</p>
-          <SelectBase onChange={this.handleChange} name="gameTime" defaultValue={{value:2, label:"2 minutes", type:"gameTime"}} options={gameTimes} />
+          <SelectBase className='react-select-container' classNamePrefix='react-select' onChange={this.handleChange} name="gameTime" defaultValue={{value:2, label:"2 minutes", type:"gameTime"}} options={gameTimes} />
           </Row>
           <Row>
           <p>Added seconds</p>
-          <SelectBase onChange={this.handleChange} name="addedTime" defaultValue={{value:5, label:"5 seconds", type:"addedTime"}} options={addedTimes} />
+          <SelectBase className='react-select-container' classNamePrefix='react-select' onChange={this.handleChange} name="addedTime" defaultValue={{value:5, label:"5 seconds", type:"addedTime"}} options={addedTimes} />
           </Row>
           <Row>
           <p>My color</p>
-          <SelectBase onChange={this.handleChange} name="userColor" defaultValue={{value:"White", label:"White", type:"userColor"}} options={userColors} />
+          <SelectBase className='react-select-container' classNamePrefix='react-select' onChange={this.handleChange} name="userColor" defaultValue={{value:"White", label:"White", type:"userColor"}} options={userColors} />
           </Row>
           </GameInfo>
           <Footer>
@@ -212,7 +214,7 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
     );
   }
   private togglePopup = () => this.setState( (prevState: IState) => ({popup : !prevState.popup}) );
- // private createGame = () => this.setState( (prevState: IState) => ({gameValues: {gameType: "Classic", gameTime: 2, addedTime: 8, userColor: "Random"}}) )
+  private createGame = () => this.setState({gameValues: {gameType: gameValue.gameType, gameTime: gameValue.gameTime, addedTime: gameValue.addedTime, creatorPiece: gameValue.creatorPiece, opponentPiece: gameValue.opponentPiece, creatorId: gameValue.creatorId}}, () => console.log(this.state));
 }
 
 export default LobbyCreateGameComponent;
