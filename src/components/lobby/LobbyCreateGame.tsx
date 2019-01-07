@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import SelectBase from 'react-select';
-// import { getOptionValue } from 'react-select/lib/builtins';
-
 
 const Container = styled.div`
 grid-column-start: 1;
@@ -72,18 +70,9 @@ width: 100%;
 height: auto;
 background-color: rgb(0,0,0, 0.1);
 `
-// const CreateForm = styled.form`
-// width: 100%;
-// height: 100%;
-// display: flex;
-// flex-direction: column;
-// justify-content: space-between;
-// align-items: center;
-// flex-wrap: wrap;
-// padding: 20px 0;
-// `
+
 let gameType = "Classic"; 
-let gameTime= 2; 
+let gameTime= 120; 
 let addedTime = 5;
 let creatorPiece = "White"; 
 let opponentPiece = "Black"; 
@@ -95,9 +84,6 @@ interface IState {
   popup:boolean,
   gameValues: {gameType: string, gameTime: number, addedTime: number, creatorPiece: string, opponentPiece: string, creatorId: number}
 }
-/*interface IMethod{
-  togglePopup(state: boolean):void
-}*/
 
 class LobbyCreateGameComponent extends React.Component<any, IState> {
   public state = {
@@ -140,26 +126,19 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
         opponentPiece = "White";
       }
     }
-    // gameValue = {gameType: data, gameTime: data, addedTime: data, creatorPiece: "", opponentPiece: "", creatorId: data}
   }
   gameValue = {gameType, gameTime, addedTime, creatorPiece, opponentPiece, creatorId};
 }
-  /* public createGame(){
-    // tslint:disable:no-console
-    
-    console.log(gameValue);
-    
-  } */
 
   public render() {
     const gameTypes = [
       { value : 'Classic', label: 'Classic', type:'gameType' }
     ];
     const gameTimes = [
-      { value: 2, label:'2 minutes', type:'gameTime' },
-      { value: 3, label:'3 minutes', type:'gameTime' },
-      { value: 5, label:'5 minutes', type:'gameTime' },
-      { value: 10, label:'10 minutes', type:'gameTime' }
+      { value: 120, label:'2 minutes', type:'gameTime' },
+      { value: 180, label:'3 minutes', type:'gameTime' },
+      { value: 300, label:'5 minutes', type:'gameTime' },
+      { value: 600, label:'10 minutes', type:'gameTime' }
     ];
     const addedTimes = [
       { value: 5, label:'5 seconds', type:'addedTime' },
@@ -173,13 +152,6 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
       { value: 'Random', label:'Random', type:'userColor' }
     ];
 
-  //   const customStyle = { option: (provided:any, state:any) => ({
-  //     ...provided,
-  //     width:'100%' 
-  //   })
-  // }
-    
-  // const varianble1: string = this.props.phrase
     return (
       <Container>
         <HeaderText>AVAILABLE GAMES</HeaderText>
@@ -214,7 +186,7 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
     );
   }
   private togglePopup = () => this.setState( (prevState: IState) => ({popup : !prevState.popup}) );
-  private createGame = () => this.setState({gameValues: {gameType: gameValue.gameType, gameTime: gameValue.gameTime, addedTime: gameValue.addedTime, creatorPiece: gameValue.creatorPiece, opponentPiece: gameValue.opponentPiece, creatorId: gameValue.creatorId}}, () => console.log(this.state));
+  private createGame = () => this.setState({gameValues: {gameType: gameValue.gameType, gameTime: gameValue.gameTime, addedTime: gameValue.addedTime, creatorPiece: gameValue.creatorPiece, opponentPiece: gameValue.opponentPiece, creatorId: gameValue.creatorId}, popup:false}, () => console.log(this.state.gameValues));
 }
 
 export default LobbyCreateGameComponent;
