@@ -79,16 +79,37 @@ let opponentPiece = "Black";
 const creatorId= 5;
 
 // tslint:disable-next-line:prefer-const
-let gameValue = {gameType, gameTime, addedTime, creatorPiece, opponentPiece, creatorId};
+let gameValue = {
+  gameType, 
+  gameTime, 
+  addedTime, 
+  creatorPiece, 
+  opponentPiece, 
+  creatorId
+};
 interface IState {
   popup:boolean,
-  gameValues: {gameType: string, gameTime: number, addedTime: number, creatorPiece: string, opponentPiece: string, creatorId: number}
+  gameValues: {
+    gameType: string, 
+    gameTime: number, 
+    addedTime: number, 
+    creatorPiece: string, 
+    opponentPiece: string, 
+    creatorId: number
+  }
 }
 
 class LobbyCreateGameComponent extends React.Component<any, IState> {
   public state = {
     popup: false,
-    gameValues: {gameType: "Classic", gameTime: 2, addedTime: 5, creatorPiece: "White", opponentPiece: "black", creatorId: 1}
+    gameValues: {
+      gameType: "Classic", 
+      gameTime: 120, 
+      addedTime: 5, 
+      creatorPiece: "White", 
+      opponentPiece: "black", 
+      creatorId: 1
+    }
   }
   public handleChange(data:any) {
     // tslint:disable:no-console
@@ -127,7 +148,14 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
       }
     }
   }
-  gameValue = {gameType, gameTime, addedTime, creatorPiece, opponentPiece, creatorId};
+  gameValue = {
+    gameType, 
+    gameTime, 
+    addedTime, 
+    creatorPiece, 
+    opponentPiece, 
+    creatorId
+  };
 }
 
   public render() {
