@@ -10,5 +10,5 @@ app.use('/graphql', expressGraphQL({
 }))
 
 app.listen(4000, () => {
-    console.log('graphiQL playground running at port 4000')
+    console.log(`graphiQL playground running at port 4000 http://localhost:4000/graphql`)
 })
