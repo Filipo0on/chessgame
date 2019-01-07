@@ -2,8 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import BGImage from '../../dist/images/chess-bg.jpg';
-import {CreatedGames} from '../../store/MockData';
-const ServerData = CreatedGames;
+import lobbyStore from "src/store/LobbyStore";
 const mockGame = {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: false, player2Ready: false,}; 
 interface IGameData {
     creator: string
@@ -22,6 +21,7 @@ interface IStateType  {
   Player2Ready: boolean;
   IsPlayer1: boolean;
   gameId: number; 
+  gameList: any;
 }
 interface IPropsType {
     match: any;
@@ -34,7 +34,13 @@ class LobbyAwaitGameComponent extends React.Component<IPropsType, IStateType> {
       IsPlayer1: true,
       Player1Ready: false,
       Player2Ready: false,
+      gameList: [],
     }; 
+}
+public componentDidMount() {
+    lobbyStore.getSubject().subscribe((st: any) => {
+        this.setState(st);           
+    });
 }
 public SetReadyPlayer1 = (gameData : IGameData) => {
     this.setState({Player1Ready: true});
@@ -43,18 +49,18 @@ public SetReadyPlayer2 = (gameData : IGameData) => {
     this.setState({Player2Ready: true});
 }
 public MakeReady = () => {
-   if(this.state.IsPlayer1) {
-       console.log('Change player 1 to ready in DB');
-   }else {
-       console.log('Change player 2 to ready in DB');
-   }
-}
-public FindMatchById = () => {
-    const findGame = ServerData.find(MatchId => MatchId.gameId === +this.state.gameId);
-    if(findGame) {
-        return findGame;
+    if(this.state.IsPlayer1) {
+        console.log('Change player 1 to ready in DB');
     }else {
-      return mockGame
+        console.log('Change player 2 to ready in DB');
+    }
+}
+public FindMatchById = () => {    
+   if(this.state.gameList.length !== 0) {
+        const findGame = this.state.gameList.find((MatchId: { gameId: number; }) => MatchId.gameId === +this.state.gameId);
+        return findGame;   
+    }else {
+        return mockGame;
     }
 }
 public render() {  
@@ -64,8 +70,7 @@ public render() {
     const player1Text = this.state.Player1Ready ? "Ready" : "Not Ready";
     const player2Text = this.state.Player2Ready ? "Ready" : "Not Ready";
     const readyBtnColor = this.state.IsPlayer1 ? Player1ReadyColor : Player2ReadyColor;
-    const readyBtnText = this.state.IsPlayer1 ? player1Text : player2Text;   
-    
+    const readyBtnText = this.state.IsPlayer1 ? player1Text : player2Text;      
     if (gameData.player1Ready === true && this.state.Player1Ready !== true) {        
          this.SetReadyPlayer1(gameData);
      };
@@ -107,6 +112,7 @@ public render() {
    } 
 }
 export default LobbyAwaitGameComponent;
+
 const Container = styled.div `    
 background-image: url(${BGImage});
 background-repeat: no-repeat;
