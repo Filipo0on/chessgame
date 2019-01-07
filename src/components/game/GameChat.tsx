@@ -1,13 +1,16 @@
 import * as React from 'react';
+import GameChatHeader from 'src/components/game/GameChatHeader';
+import { GameChatInput , GameStyleDiv } from '../../styles/game/Game';
 
-class GameChatComponent extends React.Component<any, any> {
+class GameChat extends React.Component<any, any> {
   public render() {
     return (
-      <div>
-        GameChatComponent
-      </div>
+      <GameStyleDiv>
+        <GameChatHeader title={'Chattrum'}/>
+        <GameChatInput placeholder={"Vänligen uppträd trevligt i chatten"} />
+      </GameStyleDiv>
     );
   }
 }
 
-export default GameChatComponent;
+export default GameChat;

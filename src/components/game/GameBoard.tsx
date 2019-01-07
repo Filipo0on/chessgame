@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-// import { Chessground } from 'chessground' denna importen ska flyttas till fil som gör en react component
-import 'react-chessground/dist/styles/chessground.css'
+import Chessground from 'src/dist/Chessground';
+import { GameBoardStyles } from '../../styles/game/Game'
 
+import 'react-chessground/dist/styles/chessground.css'
 class GameBoardComponent extends React.Component<any, any> {
   public onComponentDidMount() {
       // something
   }
   public render() {
     return (
-      <div>
-        GameBoardComponent
-        {/* <Chessground /> */}
-      </div>
+      <GameBoardStyles>
+        <Chessground name="chess" />
+      </GameBoardStyles>
     );
   }
 }
