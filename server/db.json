@@ -1,41 +1,43 @@
 {
-    "games": [{
-            "id": 1,
-            "gameType": "Classic",
-            "gameTime": "5",
-            "gameAddTime": "15",
-            "gameStarted": false
-        },
-        {
-            "id": 2,
-            "gameType": "Classic",
-            "gameTime": "5",
-            "gameAddTime": "15",
-            "gameStarted": false
-        },
-        {
-            "id": 3,
-            "gameType": "Classic",
-            "gameTime": "10",
-            "gameAddTime": "5",
-            "gameStarted": true
-        }
-    ],
-    "players": [{
-            "id": 1,
-            "userName": "Anonymous"
-        },
-        {
-            "id": 2,
-            "userName": "Anonymous"
-        },
-        {
-            "id": 3,
-            "userName": "Anonymous"
-        },
-        {
-            "id": 4,
-            "userName": "Anonymous"
-        }
-    ]
+  "games": [
+    {
+      "id": "1",
+      "gameType": "Classic",
+      "gameTime": "5",
+      "gameAddTime": "15",
+      "gameStarted": true
+    },
+    {
+      "id": "2",
+      "gameType": "Classic",
+      "gameTime": "5",
+      "gameAddTime": "15",
+      "gameStarted": false
+    },
+    {
+      "id": "3",
+      "gameType": "Classic",
+      "gameTime": "10",
+      "gameAddTime": "5",
+      "gameStarted": true
+    }
+  ],
+  "players": [
+    {
+      "id": "1",
+      "userName": "Anonymous"
+    },
+    {
+      "id": "2",
+      "userName": "Anonymous"
+    },
+    {
+      "id": "3",
+      "userName": "Anonymous"
+    },
+    {
+      "id": "4",
+      "userName": "Anonymous"
+    }
+  ]
 }
