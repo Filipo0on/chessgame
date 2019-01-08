@@ -1,9 +1,22 @@
-import * as React from 'react';
+import * as React from "react";
+import GameStatus from "./gameInfo/GameStatus";
+import GamePlayers from "./gameInfo/GamePlayers";
+import { InfoStyles } from "../../styles/game/Game";
+import { IGamePlayerProps, IGameProps } from "./interfacesGame";
 
-class GameInfoComponent extends React.Component<any, any> {
+class GameInfo extends React.Component<IGamePlayerProps & IGameProps, any> {
   public render() {
-    return "GameInfoComponent"
+    return (
+      <InfoStyles>
+        <GameStatus active={this.props.game.active} />
+        {/* <GameWinner /> TO BE IMPLEMENTED */}
+        <GamePlayers
+          creator={this.props.creator}
+          opponent={this.props.opponent}
+        />
+      </InfoStyles>
+    );
   }
 }
 
-export default GameInfoComponent;
+export default GameInfo;
