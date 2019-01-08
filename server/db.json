@@ -4,21 +4,27 @@
             "gameType": "Classic",
             "gameTime": "5",
             "gameAddTime": "15",
-            "gameStarted": false
+            "gameStarted": false,
+            "creator":  {"id": null, "color": "b" },
+            "opponent": {"id": null, "color": "w" }
         },
         {
             "id": 2,
             "gameType": "Classic",
             "gameTime": "5",
             "gameAddTime": "15",
-            "gameStarted": false
+            "gameStarted": false,
+            "creator":  {"id": null, "color": "b" },
+            "opponent": {"id": null, "color": "w" }
         },
         {
             "id": 3,
             "gameType": "Classic",
             "gameTime": "10",
             "gameAddTime": "5",
-            "gameStarted": true
+            "gameStarted": true,
+            "creator":  {"id": null, "color": "b" },
+            "opponent": {"id": null, "color": "w" }
         }
     ],
     "players": [{
