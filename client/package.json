@@ -9,6 +9,7 @@
     "@types/styled-components": "^4.1.4",
     "chess.js": "^0.10.2",
     "chessground": "^7.3.4",
+    "moment": "^2.23.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-chessground": "^1.0.0",
