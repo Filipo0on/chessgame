@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class PlayerHistoryComponent extends React.Component<any, any> {
+class PlayerHistory extends React.Component<any, any> {
   public render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class PlayerHistoryComponent extends React.Component<any, any> {
   }
 }
 
-export default PlayerHistoryComponent;
+export default PlayerHistory;

@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 import { IGameChatHeader} from 'src/components/game/interfacesGame';
+import { GameChatH3 } from 'src/styles/game/Game'
 
 class GameChatHeader extends React.Component<IGameChatHeader, any> {
-
     public render(){
         return(
-            <h3>{this.props.title}</h3>
+            <GameChatH3>
+             {this.props.title}
+            </GameChatH3>
         )
     }
 }

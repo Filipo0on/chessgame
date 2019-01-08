@@ -4,7 +4,7 @@ import Chessground from 'src/dist/Chessground';
 import { GameBoardStyles } from '../../styles/game/Game'
 
 import 'react-chessground/dist/styles/chessground.css'
-class GameBoardComponent extends React.Component<any, any> {
+class GameBoard extends React.Component<any, any> {
   public onComponentDidMount() {
       // something
   }
@@ -17,4 +17,4 @@ class GameBoardComponent extends React.Component<any, any> {
   }
 }
 
-export default GameBoardComponent;
+export default GameBoard;
