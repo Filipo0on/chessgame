@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull } = require('graphql');
 const GameType = require('./types/GameType');
 
 const mutation = new GraphQLObjectType({
@@ -8,7 +8,7 @@ const mutation = new GraphQLObjectType({
     startGame: {
       type: GameType,
       args: { 
-        id: { type: GraphQLString },
+        id: { type: new GraphQLNonNull(GraphQLString) },
         gameStarted: { type: GraphQLBoolean }
       },
       resolve(parentValue, args) {
