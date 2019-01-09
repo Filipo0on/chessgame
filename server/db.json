@@ -5,8 +5,8 @@
             "gameTime": "5",
             "gameAddTime": "15",
             "gameStarted": false,
-            "creator":  {"id": null, "color": "b" },
-            "opponent": {"id": null, "color": "w" }
+            "creatorId": 1,
+            "opponentId": 1
         },
         {
             "id": 2,
@@ -14,8 +14,8 @@
             "gameTime": "5",
             "gameAddTime": "15",
             "gameStarted": false,
-            "creator":  {"id": null, "color": "b" },
-            "opponent": {"id": null, "color": "w" }
+            "creatorId": 2,
+            "opponentId": 2
         },
         {
             "id": 3,
@@ -23,8 +23,8 @@
             "gameTime": "10",
             "gameAddTime": "5",
             "gameStarted": true,
-            "creator":  {"id": null, "color": "b" },
-            "opponent": {"id": null, "color": "w" }
+            "creatorId": 3,
+            "opponentId": 3
         }
     ],
     "players": [{
@@ -43,5 +43,39 @@
             "id": 4,
             "userName": "Anonymous"
         }
+    ],
+    "creators": [{
+            "id": 1,
+            "color": "w"
+        },
+        {
+            "id": 2,
+            "color": "b"
+        },
+        {
+            "id": 3,
+            "color": "w"
+        },
+        {
+            "id": 4,
+            "color": "b"
+        }
+    ],
+    "opponents": [{
+              "id": 1,
+              "color": "b"
+          }, 
+          {
+              "id": 2,
+              "color": "w"
+          }, 
+          {
+              "id": 3,
+              "color": "b"
+          },
+          {
+              "id": 4,
+              "color": "w"
+          }
     ]
 }
