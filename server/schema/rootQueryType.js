@@ -8,38 +8,6 @@ const OpponentType = require('./types/OpponentType');
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    getCreator: {
-      type: CreatorType,
-      args: { id: { type: GraphQLString} },
-      resolve(parentValue, args) {
-        console.log('getcreator',parentValue, args)
-        return axios.get(`http://localhost:1337/creators/${args.id}`)
-          .then(resp => {
-            return resp.data});
-      }
-    },
-    getCreators: {
-      type: new GraphQLList(CreatorType),
-      resolve(parentValue, args) {
-        return axios.get(`http://localhost:1337/creators`)
-          .then(resp => resp.data);
-      }
-    },
-    getOpponent: {
-      type: OpponentType,
-      args: { id: { type: GraphQLString } },
-      resolve(parentValue, args) {
-        return axios.get(`http://localhost:1337/opponents/${args.id}`)
-          .then(resp => resp.data);
-      }
-    },
-    getOpponents: {
-      type: new GraphQLList(OpponentType),
-      resolve(parentValue, args) {
-        return axios.get(`http://localhost:1337/opponents`)
-          .then(resp => resp.data);
-      }
-    },
     getGame: {
      type: GameType,
      args: { id: { type: GraphQLString } },
