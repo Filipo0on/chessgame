@@ -20,22 +20,7 @@ const query = new GraphQLObjectType({
           return axios.get(`http://localhost:1337/games`)
             .then(resp => resp.data);
         }
-      },
-      getPlayer: {
-        type: PlayerType,
-        args: { id: { type: GraphQLString } },
-        resolve(parentValue, args) {
-          return axios.get(`http://localhost:1337/players/${args.id}`)
-            .then(resp => resp.data);
-        }
-      },
-      getPlayers: {
-        type: new GraphQLList(PlayerType),
-        resolve(parentValue) {
-          return axios.get(`http://localhost:1337/players`)
-            .then(resp => resp.data);
-        }
-      },
+      }
     }
 });
 
