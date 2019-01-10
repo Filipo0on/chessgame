@@ -4,7 +4,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
 
 const apiUrl = dbConfig.dbPath;
-const RootQuery = new GraphQLObjectType({
+const query = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     getGame: {
@@ -25,4 +25,4 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
-module.exports = RootQuery;
+module.exports = query;

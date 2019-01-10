@@ -54,11 +54,13 @@ export const GameH1 = styled.h1`
     font-weight: 100;
     margin: 0;
 `;
+
 export const Small = styled.small`
     font-size: 60%;
     font-weight: 100;
     color:#444444;
     margin: 0;
+
 `;
 export const InfoStyles = styled.article`
     display: flex;
