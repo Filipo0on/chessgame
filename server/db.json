@@ -5,39 +5,39 @@
       "gameType": "Classic",
       "gameTime": "5",
       "gameAddTime": "15",
-      "gameStarted": true
+      "gameStarted": true,
+      "creator": "Anonymous1355",
+      "opponent": "Anonumous4753",
+      "isWhite": "Anonymous1355",
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/4PP2/8/PPPP2PP/RNBQKBNR b KQkq f3 0 2",
+      "history": [
+        {"color": "w", "from": "e2", "to": "e4", "flags": "b", "piece": "p", "san": "e4"},
+        { "color": "b", "from": "e7", "to": "e5", "flags": "b", "piece": "p", "san": "e5" }
+      ]
     },
     {
       "id": "2",
       "gameType": "Classic",
       "gameTime": "5",
       "gameAddTime": "15",
-      "gameStarted": false
+      "gameStarted": false,
+      "creator": "Anonymous1355",
+      "opponent": "Anonumous4753",
+      "isWhite": "",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "history": []
     },
     {
       "id": "3",
       "gameType": "Classic",
       "gameTime": "10",
       "gameAddTime": "5",
-      "gameStarted": true
-    }
-  ],
-  "players": [
-    {
-      "id": "1",
-      "userName": "Anonymous"
-    },
-    {
-      "id": "2",
-      "userName": "Anonymous"
-    },
-    {
-      "id": "3",
-      "userName": "Anonymous"
-    },
-    {
-      "id": "4",
-      "userName": "Anonymous"
+      "gameStarted": true,
+      "creator": "Anonymous1355",
+      "opponent": "Anonumous4753",
+      "isWhite": "",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "history": []
     }
   ]
 }
