@@ -7,7 +7,7 @@ const OpponentType = require('./OpponentType');
 const GameType = new GraphQLObjectType({
     name: 'Game',
     fields: () => ({
-      id: { type: GraphQLInt },
+      id: { type: GraphQLString},
       gameType: { type: GraphQLString },
       gameTime: { type: GraphQLString },
       gameAddTime: { type: GraphQLString },

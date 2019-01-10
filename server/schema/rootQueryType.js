@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { GraphQLObjectType, GraphQLInt, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
 const PlayerType = require('./types/PlayerType');
 const CreatorType = require('./types/CreatorType');
@@ -10,7 +10,7 @@ const RootQuery = new GraphQLObjectType({
   fields: {
     getCreator: {
       type: CreatorType,
-      args: { id: { type: GraphQLInt } },
+      args: { id: { type: GraphQLString} },
       resolve(parentValue, args) {
         console.log('getcreator',parentValue, args)
         return axios.get(`http://localhost:1337/creators/${args.id}`)
@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
     },
     getOpponent: {
       type: OpponentType,
-      args: { id: { type: GraphQLInt } },
+      args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
         return axios.get(`http://localhost:1337/opponents/${args.id}`)
           .then(resp => resp.data);
@@ -41,8 +41,8 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     getGame: {
-      type: GameType,
-          args: { id: { type: GraphQLInt } },
+     type: GameType,
+     args: { id: { type: GraphQLString } },
           resolve(parentValue, args) {
             return axios.get(`http://localhost:1337/games/${args.id}`)
               .then(resp => resp.data);
@@ -57,7 +57,7 @@ const RootQuery = new GraphQLObjectType({
       },
       getPlayer: {
         type: PlayerType,
-        args: { id: { type: GraphQLInt } },
+        args: { id: { type: GraphQLString } },
         resolve(parentValue, args) {
           return axios.get(`http://localhost:1337/players/${args.id}`)
             .then(resp => resp.data);
