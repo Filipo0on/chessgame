@@ -1,8 +1,4 @@
 const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql');
-const axios = require('axios');
-const CreatorType = require('./CreatorType');
-const OpponentType = require('./OpponentType');
-
 
 const GameType = new GraphQLObjectType({
     name: 'Game',
@@ -12,20 +8,8 @@ const GameType = new GraphQLObjectType({
       gameTime: { type: GraphQLString },
       gameAddTime: { type: GraphQLString },
       gameStarted:  { type: GraphQLBoolean },
-      creator: {
-        type: CreatorType, 
-        resolve(parentValue, args) {
-          return axios.get(`http://localhost:1337/creators/${parentValue.creatorId}`)
-          .then(res => res.data)
-        }
-       },
-       opponent: {
-        type: OpponentType, 
-        resolve(parentValue, args) {
-          return axios.get(`http://localhost:1337/opponents/${parentValue.opponentId}`)
-          .then(res => res.data)
-        }
-       }
+      creator: {type: GraphQLString},
+      opponent: {type: GraphQLString},
     })
 });
 
