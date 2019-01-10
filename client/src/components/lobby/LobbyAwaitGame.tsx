@@ -4,18 +4,7 @@ import styled from 'styled-components';
 import BGImage from '../../dist/images/chess-bg.jpg';
 import lobbyStore from "src/store/LobbyStore";
 const mockGame = {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: false, player2Ready: false,}; 
-interface IGameData {
-    creator: string
-    creatorColor: string
-    gameAddTime: number
-    gameId: number
-    gameStarted: boolean
-    gameTime: number
-    gameType: string | undefined
-    opponent: string
-    player1Ready: boolean
-    player2Ready: boolean
-    }
+   
 interface IStateType  {
   Player1Ready: boolean;
   Player2Ready: boolean;
@@ -42,10 +31,10 @@ public componentDidMount() {
         this.setState(st);           
     });
 }
-public SetReadyPlayer1 = (gameData : IGameData) => {
+public SetReadyPlayer1 = () => {
     this.setState({Player1Ready: true});
 }
-public SetReadyPlayer2 = (gameData : IGameData) => {
+public SetReadyPlayer2 = () => {
     this.setState({Player2Ready: true});
 }
 public MakeReady = () => {
@@ -55,7 +44,7 @@ public MakeReady = () => {
         console.log('Change player 2 to ready in DB');
     }
 }
-public FindMatchById = () => {    
+public findMatchById = () => {    
    if(this.state.gameList.length !== 0) {
         const findGame = this.state.gameList.find((MatchId: { gameId: number; }) => MatchId.gameId === +this.state.gameId);
         return findGame;   
@@ -64,7 +53,7 @@ public FindMatchById = () => {
     }
 }
 public render() {  
-    const gameData = this.FindMatchById();
+    const gameData = this.findMatchById();
     const Player1ReadyColor = this.state.Player1Ready ? "green" : "red";
     const Player2ReadyColor = this.state.Player2Ready ? "green" : "red";
     const player1Text = this.state.Player1Ready ? "Ready" : "Not Ready";
@@ -72,11 +61,10 @@ public render() {
     const readyBtnColor = this.state.IsPlayer1 ? Player1ReadyColor : Player2ReadyColor;
     const readyBtnText = this.state.IsPlayer1 ? player1Text : player2Text;      
     if (gameData.player1Ready === true && this.state.Player1Ready !== true) {        
-         this.SetReadyPlayer1(gameData);
+         this.SetReadyPlayer1();
      };
-
     if (gameData.player2Ready === true && this.state.Player2Ready !== true) {        
-        this.SetReadyPlayer2(gameData);
+        this.SetReadyPlayer2();
      };
     return (        
         <Container>
@@ -87,7 +75,8 @@ public render() {
                 <Players>
                    <Player>
                        <PlayerName>{gameData.creator}</PlayerName>
-                       <PlayerReadyButton style={{backgroundColor: Player1ReadyColor,}}>{player1Text}</PlayerReadyButton>
+                       {/* <PlayerReadyButton style={{backgroundColor: Player1ReadyColor,}}>{player1Text}</PlayerReadyButton>   */}
+                       <PlayerReadyButton style={{backgroundColor: Player1ReadyColor,}}>{player1Text}</PlayerReadyButton>                   
                    </Player>
                    <Player>
                        <PlayerName>{gameData.opponent}</PlayerName>
@@ -114,57 +103,57 @@ public render() {
 export default LobbyAwaitGameComponent;
 
 const Container = styled.div `    
-background-image: url(${BGImage});
-background-repeat: no-repeat;
-background-size: cover;
-background-origin: content-box;
-margin: 0; 
-height: 100Vh;
-display: grid;
-grid-template-columns: 10% auto 10%;
-grid-template-rows: 120px auto 120px;   
+    background-image: url(${BGImage});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: content-box;
+    margin: 0; 
+    height: 100Vh;
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: 120px auto 120px;   
 `
 const Content = styled.div `
-grid-column-start: 2;
-grid-column-end: 3;
-grid-row-start: 2;
-grid-row-end: 3;
-background-color: white;
-opacity: 0.8;
-height: 650px;
-box-shadow: 5px 5px 30px black, -5px -3px 30px black;
-display: grid;
-grid-template-columns: 5% 50% 35% 10%;
-grid-template-rows: 80px auto 150px;  
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: white;
+    opacity: 0.8;
+    height: 650px;
+    box-shadow: 5px 5px 30px black, -5px -3px 30px black;
+    display: grid;
+    grid-template-columns: 5% 50% 35% 10%;
+    grid-template-rows: 80px auto 150px;  
 `
 const Header = styled.div `
-grid-column-start: 1;
-grid-column-end: 6;
-grid-row-start: 1;
-grid-row-end: 2;
-margin: 0 5%;
-padding-top: 30px;
-font-size: 20px;
-font-weight: bold;
-border-bottom: 2px solid black;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 0 5%;
+    padding-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
 `
 const Players = styled.div `
-grid-column-start: 2;
-grid-column-end: 3;
-grid-row-start: 2;
-grid-row-end: 3;
-margin-top: 50px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-top: 50px;
 `
 const Player = styled.div `
-display: flex;
-justify-content: space-between;
-align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 const PlayerName = styled.p `
-font-size: 20px;
-font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 `
-const PlayerReadyButton = styled.button `
+const PlayerReadyButton = styled.button `      
       padding: 12px;
       color: white;
       border-radius: 10px;
@@ -176,18 +165,18 @@ const PlayerReadyButton = styled.button `
       `
 
 const MatchInfo = styled.div `
-grid-column-start: 3;
-grid-column-end: 4;
-grid-row-start: 2;
-grid-row-end: 3;
-margin-top: 50px;
-display: flex;
-justify-content: flex-end;
-line-height: 20px;
-font-size: 17px;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 20px;
+    font-size: 17px;
 `
 const MatchInfoHeading = styled.h2`
-margin-top: 0;
+    margin-top: 0;
 `
 const List = styled.ul `
    margin: 0;
@@ -196,20 +185,20 @@ const List = styled.ul `
 `
 const ListItem = styled.li ``
 const ReadyBtn= styled.button `
-grid-column-start: 2;
-grid-column-end: 3;
-grid-row-start: 3;
-grid-row-end: 4;
-height: 100px;
-width: 200px;
-font-size: 30px;
-font-weight: bold;
-border: none;
-border-radius: 10px;
-color: white;
-cursor: pointer;
-:focus {
-    outline-width: 0;
-  }  
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    height: 100px;
+    width: 200px;
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    :focus {
+        outline-width: 0;
+    }  
 
 `
