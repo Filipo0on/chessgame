@@ -26,56 +26,5 @@
             "creatorId": 3,
             "opponentId": 3
         }
-    ],
-    "players": [{
-            "id": "1",
-            "userName": "Anonymous"
-        },
-        {
-            "id": "2",
-            "userName": "Anonymous"
-        },
-        {
-            "id": "3",
-            "userName": "Anonymous"
-        },
-        {
-            "id": "4",
-            "userName": "Anonymous"
-        }
-    ],
-    "creators": [{
-            "id": 1,
-            "color": "w"
-        },
-        {
-            "id": 2,
-            "color": "b"
-        },
-        {
-            "id": 3,
-            "color": "w"
-        },
-        {
-            "id": 4,
-            "color": "b"
-        }
-    ],
-    "opponents": [{
-              "id": 1,
-              "color": "b"
-          }, 
-          {
-              "id": 2,
-              "color": "w"
-          }, 
-          {
-              "id": 3,
-              "color": "b"
-          },
-          {
-              "id": 4,
-              "color": "w"
-          }
     ]
 }
