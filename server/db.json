@@ -5,8 +5,8 @@
             "gameTime": "5",
             "gameAddTime": "15",
             "gameStarted": false,
-            "creatorId": 1,
-            "opponentId": 1
+            "creatorId": "1",
+            "opponentId": "1"
         },
         {
             "id": "2",
@@ -14,8 +14,8 @@
             "gameTime": "5",
             "gameAddTime": "15",
             "gameStarted": false,
-            "creatorId": 2,
-            "opponentId": 2
+            "creatorId": "2",
+            "opponentId": "2"
         },
         {
             "id": "3",
@@ -23,8 +23,8 @@
             "gameTime": "10",
             "gameAddTime": "5",
             "gameStarted": true,
-            "creatorId": 3,
-            "opponentId": 3
+            "creatorId": "3",
+            "opponentId": "3"
         }
     ]
 }
