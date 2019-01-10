@@ -4,7 +4,6 @@ import { IGameChatHeader} from 'src/components/game/interfacesGame';
 import { GameChatH3 } from 'src/styles/game/Game'
 
 class GameChatHeader extends React.Component<IGameChatHeader, any> {
-
     public render(){
         return(
             <GameChatH3>
