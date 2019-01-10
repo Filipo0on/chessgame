@@ -1,9 +1,9 @@
-const { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = require('graphql');
 
 const GameType = new GraphQLObjectType({
     name: 'Game',
     fields: () => ({
-      id: { type: GraphQLString},
+      id: { type: GraphQLString },
       gameType: { type: GraphQLString },
       gameTime: { type: GraphQLString },
       gameAddTime: { type: GraphQLString },

@@ -3,8 +3,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
 const PlayerType = require('./types/PlayerType');
 
-const RootQuery = new GraphQLObjectType({
-    name: 'RootQueryType',
+const query = new GraphQLObjectType({
+    name: 'Query',
     fields: {
       getGame: {
           type: GameType,
@@ -39,4 +39,4 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
-module.exports = RootQuery;
+module.exports = query;
