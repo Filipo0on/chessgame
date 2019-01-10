@@ -1,7 +1,6 @@
 const axios = require('axios');
 const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
-const PlayerType = require('./types/PlayerType');
 
 const query = new GraphQLObjectType({
     name: 'Query',
