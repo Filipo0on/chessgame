@@ -9,12 +9,13 @@ const query = new GraphQLObjectType({
   fields: {
     getGame: {
      type: GameType,
-     args: { id: { type: GraphQLString } },
-          resolve(parentValue, args) {
-            return axios.get(`${apiUrl}/games/${args.id}`)
-              .then(resp => resp.data);
-          }
-        },
+     args: { 
+       id: { type: GraphQLString } },
+        resolve(parentValue, args) {
+          return axios.get(`${apiUrl}/games/${args.id}`)
+            .then(resp => resp.data);
+        }
+      },
       getGames: {
         type: new GraphQLList(GameType),
         resolve(parentValue) {
