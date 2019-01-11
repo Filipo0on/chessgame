@@ -8,6 +8,8 @@ const GameType = new GraphQLObjectType({
       gameTime: { type: GraphQLString },
       gameAddTime: { type: GraphQLString },
       gameStarted:  { type: GraphQLBoolean },
+      creator: {type: GraphQLString},
+      opponent: {type: GraphQLString},
     })
 });
 
