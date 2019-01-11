@@ -1,25 +1,27 @@
 const axios = require('axios');
+const dbConfig = require('./../config')
 const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
 
+const apiUrl = dbConfig.dbPath;
 const query = new GraphQLObjectType({
-    name: 'Query',
-    fields: {
-      getGame: {
-          type: GameType,
-          args: { id: { type: GraphQLString } },
+  name: 'RootQueryType',
+  fields: {
+    getGame: {
+     type: GameType,
+     args: { id: { type: GraphQLString } },
           resolve(parentValue, args) {
-            return axios.get(`http://localhost:1337/games/${args.id}`)
+            return axios.get(`${apiUrl}/games/${args.id}`)
               .then(resp => resp.data);
           }
         },
       getGames: {
         type: new GraphQLList(GameType),
         resolve(parentValue) {
-          return axios.get(`http://localhost:1337/games`)
+          return axios.get(`${apiUrl}/games`)
             .then(resp => resp.data);
         }
-      }
+      },
     }
 });
 
