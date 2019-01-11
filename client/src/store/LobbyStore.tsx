@@ -1,8 +1,9 @@
 import {BehaviorSubject} from 'rxjs';
 // const Chess = require('chess.js').Chess;
-
+// tslint:disable:no-console
 const serverData = {   
-   gameList: [ {creator : "Lenart", creatorColor: "",  opponent : "Berit", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: true, player2Ready: false,},
+   gameList: [ 
+    {creator : "Lenart", creatorColor: "",  opponent : "Berit", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: true, player2Ready: false,},
     {creator : "Stefan", creatorColor: "",  opponent : "Kalle", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: false, player2Ready: true,},
     {creator : "Ann-Britt", creatorColor: "",  opponent : "Stina", gameId : 3, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: true, player2Ready: true,},
     {creator : "Gunnbritt", creatorColor: "",  opponent : "Herman", gameId : 4, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: false, player2Ready: false,},
@@ -17,7 +18,7 @@ const serverData = {
 const subject = new BehaviorSubject(serverData);
 class LobbyStore {
     constructor() {
-        this.setState({})
+        this.setState({})            
     }
     public setState(st: any) {
       const val = subject.value;
@@ -29,6 +30,6 @@ class LobbyStore {
     }
     public updateDemoMessage(payload:any) {
       this.setState(payload)
-    }
-}
+    }  
+  }
 export default new LobbyStore();

@@ -3,88 +3,65 @@ import * as React from 'react';
 import styled from 'styled-components';
 import BGImage from '../../dist/images/chess-bg.jpg';
 import lobbyStore from "src/store/LobbyStore";
-const mockGame = {creator : "Anonymous", creatorColor: "",  opponent : "Anonymous", gameId : 2, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: false, player2Ready: false,}; 
-   
-interface IStateType  {
-  Player1Ready: boolean;
-  Player2Ready: boolean;
-  IsPlayer1: boolean;
+import { Redirect } from "react-router-dom";
+interface IStateType  { 
   gameId: number; 
-  gameList: any;
-}
-interface IPropsType {
+  gameList: any; 
+  filteredGame: any;
+  readyToJoinGame: boolean;
+}interface IPropsType {
     match: any;
 }
 class LobbyAwaitGameComponent extends React.Component<IPropsType, IStateType> {
   constructor (props: IPropsType) {
     super(props)
     this.state = {             
-      gameId: this.props.match.params.id,     
-      IsPlayer1: true,
-      Player1Ready: false,
-      Player2Ready: false,
-      gameList: [],
+      gameId: this.props.match.params.id,   
+      gameList: [],      
+      readyToJoinGame: false,
+      
+      filteredGame: {
+          gameType: "classic",
+          gameAddTime: 5,
+          gameTime: 30,
+      }
     }; 
 }
 public componentDidMount() {
-    lobbyStore.getSubject().subscribe((st: any) => {
-        this.setState(st);           
+    lobbyStore.getSubject().subscribe((st: any) => {        
+        this.setState(st, () => {           
+            this.findMatchById();            
+        });           
     });
 }
-public SetReadyPlayer1 = () => {
-    this.setState({Player1Ready: true});
-}
-public SetReadyPlayer2 = () => {
-    this.setState({Player2Ready: true});
-}
-public MakeReady = () => {
-    if(this.state.IsPlayer1) {
-        console.log('Change player 1 to ready in DB');
-    }else {
-        console.log('Change player 2 to ready in DB');
+public checkIfReadyToJoinMatch = () => {
+    if(this.state.filteredGame.gameStarted) {        
+        setTimeout(() => { 
+            this.setState({readyToJoinGame: true,})
+        }, 1500);   
     }
 }
 public findMatchById = () => {    
    if(this.state.gameList.length !== 0) {
         const findGame = this.state.gameList.find((MatchId: { gameId: number; }) => MatchId.gameId === +this.state.gameId);
-        return findGame;   
-    }else {
-        return mockGame;
+        this.setState({filteredGame: findGame});        
     }
 }
 public render() {  
-    const gameData = this.findMatchById();
-    const Player1ReadyColor = this.state.Player1Ready ? "green" : "red";
-    const Player2ReadyColor = this.state.Player2Ready ? "green" : "red";
-    const player1Text = this.state.Player1Ready ? "Ready" : "Not Ready";
-    const player2Text = this.state.Player2Ready ? "Ready" : "Not Ready";
-    const readyBtnColor = this.state.IsPlayer1 ? Player1ReadyColor : Player2ReadyColor;
-    const readyBtnText = this.state.IsPlayer1 ? player1Text : player2Text;      
-    if (gameData.player1Ready === true && this.state.Player1Ready !== true) {        
-         this.SetReadyPlayer1();
-     };
-    if (gameData.player2Ready === true && this.state.Player2Ready !== true) {        
-        this.SetReadyPlayer2();
-     };
+    if (!this.state.filteredGame ) {
+        return null;
+    }
+    const gameData = this.state.filteredGame;  
+    const HeadingText = gameData.gameStarted ? 'Joining Game...' : 'Waiting for opponent'; 
+    this.checkIfReadyToJoinMatch();
+    if(this.state.readyToJoinGame) {
+        return <Redirect to={'/game/'+this.state.gameId} />          
+    }  
     return (        
         <Container>
             <Content>
-                 <Header>
-                  Waiting for players
-                  </Header>
-                <Players>
-                   <Player>
-                       <PlayerName>{gameData.creator}</PlayerName>
-                       {/* <PlayerReadyButton style={{backgroundColor: Player1ReadyColor,}}>{player1Text}</PlayerReadyButton>   */}
-                       <PlayerReadyButton style={{backgroundColor: Player1ReadyColor,}}>{player1Text}</PlayerReadyButton>                   
-                   </Player>
-                   <Player>
-                       <PlayerName>{gameData.opponent}</PlayerName>
-                       <PlayerReadyButton style={{backgroundColor: Player2ReadyColor,}}>{player2Text}</PlayerReadyButton>
-                   </Player>                    
-                </Players>   
-
-                <MatchInfo>
+                 <Header>{HeadingText}</Header>                        
+               <MatchInfo>
                     <div>
                         <MatchInfoHeading>Match Info</MatchInfoHeading>
                         <List>
@@ -94,7 +71,7 @@ public render() {
                         </List>
                     </div>                 
                 </MatchInfo>  
-               <ReadyBtn onClick={this.MakeReady} style={{backgroundColor: readyBtnColor,}}>{readyBtnText}</ReadyBtn>
+               
             </Content>
         </Container>
      );
@@ -108,10 +85,10 @@ const Container = styled.div `
     background-size: cover;
     background-origin: content-box;
     margin: 0; 
-    height: 100Vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 10% auto 10%;
-    grid-template-rows: 120px auto 120px;   
+    grid-template-rows: 10% auto 10%;   
 `
 const Content = styled.div `
     grid-column-start: 2;
@@ -120,58 +97,34 @@ const Content = styled.div `
     grid-row-end: 3;
     background-color: white;
     opacity: 0.8;
-    height: 650px;
+    height: 100%;
+    max-height: 450px;
+    min-width: 1000px;
+    justify-self: center;
     box-shadow: 5px 5px 30px black, -5px -3px 30px black;
     display: grid;
     grid-template-columns: 5% 50% 35% 10%;
-    grid-template-rows: 80px auto 150px;  
+    grid-template-rows: 80px auto;  
 `
-const Header = styled.div `
+const Header = styled.h1 `
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
     margin: 0 5%;
     padding-top: 30px;
-    font-size: 20px;
+    
     font-weight: bold;
     border-bottom: 2px solid black;
 `
-const Players = styled.div `
+const MatchInfo = styled.div `
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
     margin-top: 50px;
-`
-const Player = styled.div `
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-const PlayerName = styled.p `
-    font-size: 20px;
-    font-weight: bold;
-`
-const PlayerReadyButton = styled.button `      
-      padding: 12px;
-      color: white;
-      border-radius: 10px;
-      border: none;     
-      :focus {
-        outline-width: 0;
-      }   
-      
-      `
-
-const MatchInfo = styled.div `
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    margin-top: 50px;
-    display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     line-height: 20px;
     font-size: 17px;
 `
@@ -183,22 +136,6 @@ const List = styled.ul `
    list-style: none;
    padding: 0;
 `
-const ListItem = styled.li ``
-const ReadyBtn= styled.button `
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    height: 100px;
-    width: 200px;
-    font-size: 30px;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    :focus {
-        outline-width: 0;
-    }  
-
+const ListItem = styled.li `
+line-height: 25px;
 `
