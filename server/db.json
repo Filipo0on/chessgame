@@ -6,7 +6,8 @@
             "gameAddTime": "15",
             "gameStarted": false,
             "creatorId": "1",
-            "opponentId": "1"
+            "opponentId": "1",
+            "messagesId": "1"
         },
         {
             "id": "2",
@@ -15,7 +16,8 @@
             "gameAddTime": "15",
             "gameStarted": false,
             "creatorId": "2",
-            "opponentId": "2"
+            "opponentId": "2",
+            "messagesId": "2"
         },
         {
             "id": "3",
@@ -24,7 +26,30 @@
             "gameAddTime": "5",
             "gameStarted": true,
             "creatorId": "3",
-            "opponentId": "3"
+            "opponentId": "3",
+            "messagesId": "3"
         }
-    ]
+    ],
+    "messages": [{
+        "id": "1",
+        "gameId": "1",
+        "user": "1",
+        "message":"Hello",
+        "createdAt": "2019-01-11 13:40:01"
+    },
+    {
+        "id": "2",
+        "gameId": "1",
+        "user": "2",
+        "message":"Hello",
+        "createdAt": "2019-01-11 13:40:05"
+    },
+    {
+        "id": "3",
+        "gameId": "1",
+        "user": "1",
+        "message":"May the best player win!",
+        "createdAt": "2019-01-11 13:40:10"
+    }
+]
 }
