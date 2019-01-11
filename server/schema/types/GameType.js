@@ -1,4 +1,5 @@
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
+const HistoryType = require('./HistoryType')
 
 const GameType = new GraphQLObjectType({
     name: 'Game',
@@ -8,8 +9,11 @@ const GameType = new GraphQLObjectType({
       gameTime: { type: GraphQLString },
       gameAddTime: { type: GraphQLString },
       gameStarted:  { type: GraphQLBoolean },
-      creator: {type: GraphQLString},
-      opponent: {type: GraphQLString},
+      creator: { type: GraphQLString },
+      opponent: { type: GraphQLString },
+      isWhite: { type: GraphQLString },
+      fen: { type: GraphQLString },
+      history: { type: GraphQLList(HistoryType) }
     })
 });
 
