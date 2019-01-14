@@ -25,8 +25,11 @@ const mutation = new GraphQLObjectType({
         gameId: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parentValue, args) {
-        return axios.patch(`http://localhost:1337/games/${args.id}`, args)
-          .then(res => res.data)
+        console.log('args', args)
+        return axios.put(`http://localhost:1337/messages`, args)
+          .then(res => {
+            console.log('res data', res.data)
+            return res.data})
       }
     }
   }
