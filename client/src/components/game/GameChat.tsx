@@ -6,6 +6,8 @@ import GameChatHeader from "src/components/game/GameChatHeader";
 import QuickMsg from "./QuickMsg";
 import { Query } from "react-apollo";
 import { GET_MESSAGES } from "../../dist/graphql/queries/game/getMessages";
+import { ADD_MESSAGE } from '../../dist/graphql/mutations/game/addMessage';
+import { client } from '../../index';
 
 const ChatContainer = styled.div`
   height: 100%;
@@ -78,13 +80,20 @@ class GameChat extends React.Component<any, any> {
 
   public onSubmitChat = (event: any) => {
     if (event.key === "Enter") {
-      return this.setState((prevState: any) => ({
-        chatMessages: prevState.chatMessages.concat({
-          text: this.state.inputValue,
-          date: new Date()
-        }),
-        inputValue: ""
-      }));
+
+      client.mutate({
+          variables: { message: "YAAAAY!", user: "2", gameId: "1", createdAt: moment(new Date()).format("HH:mm:ss DD MMM, YYYY") },
+          mutation: ADD_MESSAGE,
+      })
+      .then(result => { console.log('success', result) })
+      .catch(error => { console.log(error) });
+      // return this.setState((prevState: any) => ({
+      //   chatMessages: prevState.chatMessages.concat({
+      //     text: this.state.inputValue,
+      //     date: new Date()
+      //   }),
+      //   inputValue: ""
+      // }));
     }
   };
 
