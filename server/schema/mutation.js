@@ -2,7 +2,9 @@ const axios = require('axios');
 const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull } = require('graphql');
 const GameType = require('./types/GameType');
 const MessageType = require('./types/MessageType');
+const dbConfig = require('./../config')
 
+const apiUrl =  dbConfig.dbPath;
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -13,7 +15,7 @@ const mutation = new GraphQLObjectType({
         gameStarted: { type: GraphQLBoolean }
       },
       resolve(parentValue, args) {
-        return axios.patch(`http://localhost:1337/games/${args.id}`, args)
+        return axios.patch(`${apiUrl}/games/${args.id}`, args)
           .then(res => res.data)
       }
     },
@@ -22,14 +24,12 @@ const mutation = new GraphQLObjectType({
       args: { 
         message: { type: new GraphQLNonNull(GraphQLString) },
         user: { type: new GraphQLNonNull(GraphQLString) },
-        gameId: { type: new GraphQLNonNull(GraphQLString) }
+        gameId: { type: new GraphQLNonNull(GraphQLString) },
+        createdAt: {type: GraphQLString }
       },
       resolve(parentValue, args) {
-        console.log('args', args)
-        return axios.put(`http://localhost:1337/messages`, args)
-          .then(res => {
-            console.log('res data', res.data)
-            return res.data})
+          return axios.post(`${apiUrl}/messages`, args)
+            .then(res => res.data)
       }
     }
   }
