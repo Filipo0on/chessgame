@@ -1,56 +1,79 @@
 {
-  "games": [
-    {
-      "id": "1",
-      "history": [
-        {
-          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-          "color": "w",
-          "from": "e2",
-          "to": "e4",
-          "flags": "something",
-          "piece": "q",
-          "san": "e8"
+    "messages": [{
+            "id": "1",
+            "gameId": "1",
+            "user": "1",
+            "message": "Hello",
+            "createdAt": "2019-01-11 13:40:01"
         },
         {
-          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-          "color": "b",
-          "from": "f2",
-          "to": "f4",
-          "flags": "something",
-          "piece": "k",
-          "san": "e3"
+            "id": "2",
+            "gameId": "1",
+            "user": "2",
+            "message": "Hello",
+            "createdAt": "2019-01-11 13:40:05"
         },
         {
-          "color": "b",
-          "fen": "feeeeeen",
-          "from": "1",
-          "to": "2",
-          "flags": "flag",
-          "piece": "q",
-          "san": "some san"
+            "id": "3",
+            "gameId": "1",
+            "user": "1",
+            "message": "May the best player win!",
+            "createdAt": "2019-01-11 13:40:10"
         }
-      ]
-    },
-    {
-      "id": "2",
-      "gameType": "Classic",
-      "gameTime": "10",
-      "gameAddTime": "5",
-      "gameStarted": false,
-      "creator": "Anonymous1355",
-      "opponent": "Anonumous4753",
-      "isWhite": ""
-    },
-    {
-      "id": "3",
-      "gameType": "Classic",
-      "gameTime": "10",
-      "gameAddTime": "5",
-      "gameStarted": false,
-      "creator": "Anonymous1355",
-      "opponent": "Anonumous4753",
-      "isWhite": ""
-    }
-  ]
+    ],
+    "games": [{
+            "id": "1",
+            "messagesId": "1",
+            "history": [{
+                    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+                    "color": "w",
+                    "from": "e2",
+                    "to": "e4",
+                    "flags": "something",
+                    "piece": "q",
+                    "san": "e8"
+                },
+                {
+                    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+                    "color": "b",
+                    "from": "f2",
+                    "to": "f4",
+                    "flags": "something",
+                    "piece": "k",
+                    "san": "e3"
+                },
+                {
+                    "color": "b",
+                    "fen": "feeeeeen",
+                    "from": "1",
+                    "to": "2",
+                    "flags": "flag",
+                    "piece": "q",
+                    "san": "some san"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "gameType": "Classic",
+            "gameTime": "10",
+            "gameAddTime": "5",
+            "gameStarted": false,
+            "creator": "Anonymous1355",
+            "opponent": "Anonumous4753",
+            "messagesId": "2",
+            "isWhite": ""
+        },
+        {
+            "id": "3",
+            "gameType": "Classic",
+            "gameTime": "10",
+            "gameAddTime": "5",
+            "gameStarted": false,
+            "creator": "Anonymous1355",
+            "opponent": "Anonumous4753",
+            "messagesId": "3",
+            "isWhite": ""
+        }
+    ]
 }
