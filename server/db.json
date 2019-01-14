@@ -4,21 +4,21 @@
             "gameId": "1",
             "user": "1",
             "message": "Hello",
-            "createdAt": "2019-01-11 13:40:01"
+            "createdAt": "13:40:01 2019-01-11"
         },
         {
             "id": "2",
             "gameId": "1",
             "user": "2",
             "message": "Hello",
-            "createdAt": "2019-01-11 13:40:05"
+            "createdAt": "13:40:05 2019-01-11"
         },
         {
             "id": "3",
             "gameId": "1",
             "user": "1",
             "message": "May the best player win!",
-            "createdAt": "2019-01-11 13:40:10"
+            "createdAt": "13:40:10 2019-01-11"
         }
     ],
     "games": [{
