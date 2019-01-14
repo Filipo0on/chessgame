@@ -1,10 +1,12 @@
 const axios = require('axios');
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
 const MessageType = require('./types/MessageType');
 const dbConfig = require('./../config')
+const HistoryInput = require('./types/HistoryInput')
 
 const apiUrl =  dbConfig.dbPath;
+
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -30,6 +32,23 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, args) {
           return axios.post(`${apiUrl}/messages`, args)
             .then(res => res.data)
+      }
+    },
+    newMove: {
+      type: GameType,
+      args: { 
+        id: { type: GraphQLNonNull(GraphQLString) },
+        history: { type: new GraphQLList(HistoryInput) }
+      },
+      resolve(parentValue, args) {
+        return axios.get(`${apiUrl}/games/${args.id}`)
+          .then((game) => {
+            let history = game.data.history;
+            history.push(args.history[0])
+            args.history = history;
+            return axios.put(`${apiUrl}/games/${args.id}`, args)
+              .then(res => res.data)
+        })
       }
     }
   }
