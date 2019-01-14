@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import BGImage from '../../dist/images/chess-bg.jpg';
 import lobbyStore from "src/store/LobbyStore";
 import { Redirect } from "react-router-dom";
+import { Query } from "react-apollo";
+import { GET_GAMES } from "../../dist/graphql/queries/game/getGames";
+
 interface IStateType  { 
   gameId: number; 
   gameList: any; 
@@ -57,24 +60,40 @@ public render() {
     if(this.state.readyToJoinGame) {
         return <Redirect to={'/game/'+this.state.gameId} />          
     }  
-    return (        
-        <Container>
-            <Content>
-                 <Header>{HeadingText}</Header>                        
-               <MatchInfo>
-                    <div>
-                        <MatchInfoHeading>Match Info</MatchInfoHeading>
-                        <List>
-                            <ListItem><strong>Game Type: </strong>{gameData.gameType}</ListItem>
-                            <ListItem><strong>Game Time: </strong>{gameData.gameTime} min</ListItem>
-                            <ListItem><strong>Game AddTime: </strong>{gameData.gameAddTime} sek</ListItem>
-                        </List>
-                    </div>                 
-                </MatchInfo>  
-               
-            </Content>
-        </Container>
-     );
+
+    return (
+        <Query query={GET_GAMES} pollInterval={1000}>
+          {({ loading, error, data }) => {
+            if (error) { return <>Something went wrong! {error}</>; }
+            if (loading || !data) { return "loading..."; }
+  
+            const games = data.getGames
+            const game = data.getGame
+            console.log('data', games) // This console log is only here to vew data now, to display how the query works. 
+                                      //  It will be removed at a later date.
+            console.log('one game', game)
+            return (        
+                <Container>
+                    <Content>
+                         <Header>{HeadingText}</Header>                        
+                       <MatchInfo>
+                            <div>
+                                <MatchInfoHeading>Match Info</MatchInfoHeading>
+                                <List>
+                                    <ListItem><strong>Game Type: </strong>{gameData.gameType}</ListItem>
+                                    <ListItem><strong>Game Time: </strong>{gameData.gameTime} min</ListItem>
+                                    <ListItem><strong>Game AddTime: </strong>{gameData.gameAddTime} sek</ListItem>
+                                </List>
+                            </div>                 
+                        </MatchInfo>  
+                       
+                    </Content>
+                </Container>
+             );
+          }}
+        </Query>
+      );
+
    } 
 }
 export default LobbyAwaitGameComponent;

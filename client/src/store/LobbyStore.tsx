@@ -1,6 +1,6 @@
-import {BehaviorSubject} from 'rxjs';
-// const Chess = require('chess.js').Chess;
 // tslint:disable:no-console
+import {BehaviorSubject} from 'rxjs';
+
 const serverData = {   
    gameList: [ 
     {creator : "Lenart", creatorColor: "",  opponent : "Berit", gameId : 1, gameType : "Classic", gameTime : 5, gameAddTime : 15, gameStarted : false, player1Ready: true, player2Ready: false,},
