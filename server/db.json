@@ -3,7 +3,7 @@
             "id": "1",
             "gameType": "Classic",
             "gameTime": "5",
-            "gameAddTime": "15",
+            "gameAddTime": "10",
             "gameStarted": false,
             "creatorId": "1",
             "opponentId": "1"
@@ -22,7 +22,7 @@
             "gameType": "Classic",
             "gameTime": "10",
             "gameAddTime": "5",
-            "gameStarted": true,
+            "gameStarted": false,
             "creatorId": "3",
             "opponentId": "3"
         }

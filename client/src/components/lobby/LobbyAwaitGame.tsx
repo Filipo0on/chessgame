@@ -2,7 +2,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import BGImage from '../../dist/images/chess-bg.jpg';
-import lobbyStore from "src/store/LobbyStore";
 import { Redirect } from "react-router-dom";
 import { Query } from "react-apollo";
 import { GET_GAMES } from "../../dist/graphql/queries/game/getGames";
@@ -20,22 +19,17 @@ class LobbyAwaitGameComponent extends React.Component<IPropsType, IStateType> {
     super(props)
     this.state = {             
       gameId: this.props.match.params.id,   
-      gameList: [],      
-      readyToJoinGame: false,
-      
-      filteredGame: {
-          gameType: "classic",
-          gameAddTime: 5,
-          gameTime: 30,
-      }
+      gameList: [],     
+      readyToJoinGame: false,      
+      filteredGame: {}
     }; 
 }
-public componentDidMount() {
-    lobbyStore.getSubject().subscribe((st: any) => {        
-        this.setState(st, () => {           
-            this.findMatchById();            
-        });           
-    });
+public setGameListState = (gameData: any) => {  
+    if(this.state.gameList !== gameData) {
+        this.setState({gameList: gameData}, () => {
+            this.findMatchById();
+        });        
+    }
 }
 public checkIfReadyToJoinMatch = () => {
     if(this.state.filteredGame.gameStarted) {        
@@ -45,33 +39,29 @@ public checkIfReadyToJoinMatch = () => {
     }
 }
 public findMatchById = () => {    
-   if(this.state.gameList.length !== 0) {
-        const findGame = this.state.gameList.find((MatchId: { gameId: number; }) => MatchId.gameId === +this.state.gameId);
+   if(this.state.gameList.length !== 0) {       
+        const findGame = this.state.gameList.find((MatchId: { id: number; }) => MatchId.id === this.state.gameId);
         this.setState({filteredGame: findGame});        
     }
 }
 public render() {  
     if (!this.state.filteredGame ) {
         return null;
-    }
+    } 
     const gameData = this.state.filteredGame;  
-    const HeadingText = gameData.gameStarted ? 'Joining Game...' : 'Waiting for opponent'; 
+    const HeadingText = gameData.gameStarted ? 'Joining Game...' : 'Waiting for opponent';   
     this.checkIfReadyToJoinMatch();
     if(this.state.readyToJoinGame) {
         return <Redirect to={'/game/'+this.state.gameId} />          
     }  
-
     return (
         <Query query={GET_GAMES} pollInterval={1000}>
           {({ loading, error, data }) => {
             if (error) { return <>Something went wrong! {error}</>; }
             if (loading || !data) { return "loading..."; }
   
-            const games = data.getGames
-            const game = data.getGame
-            console.log('data', games) // This console log is only here to vew data now, to display how the query works. 
-                                      //  It will be removed at a later date.
-            console.log('one game', game)
+            const games = data.getGames;           
+               this.setGameListState(games);
             return (        
                 <Container>
                     <Content>
@@ -85,15 +75,13 @@ public render() {
                                     <ListItem><strong>Game AddTime: </strong>{gameData.gameAddTime} sek</ListItem>
                                 </List>
                             </div>                 
-                        </MatchInfo>  
-                       
+                        </MatchInfo>                        
                     </Content>
                 </Container>
              );
           }}
         </Query>
       );
-
    } 
 }
 export default LobbyAwaitGameComponent;
