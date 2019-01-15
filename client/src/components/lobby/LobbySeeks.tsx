@@ -5,7 +5,7 @@ class LobbySeeksComponent extends React.Component<any, any> {
     return (
       <div>
         <div>
-            Seeks
+            hejsan
         </div>
       </div>
     );

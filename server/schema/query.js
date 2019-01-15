@@ -1,38 +1,40 @@
 const axios = require('axios');
+const dbConfig = require('./../config')
 const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 const GameType = require('./types/GameType');
-const PlayerType = require('./types/PlayerType');
+const MessageType = require('./types/MessageType')
 
+const apiUrl = dbConfig.dbPath;
 const query = new GraphQLObjectType({
-    name: 'Query',
-    fields: {
-      getGame: {
-          type: GameType,
-          args: { id: { type: GraphQLString } },
-          resolve(parentValue, args) {
-            return axios.get(`http://localhost:1337/games/${args.id}`)
-              .then(resp => resp.data);
-          }
-        },
+  name: 'RootQueryType',
+  fields: {
+    getMessage: {
+      type: MessageType,
+      resolve(parentValue, args) {
+        return axios.get(`${apiUrl}/messages/${args.id}`)
+          .then(resp => resp.data);
+      }
+    },
+    getMessages: {
+      type: new GraphQLList(MessageType),
+      resolve(parentValue) {
+        return axios.get(`${apiUrl}/messages`)
+          .then(resp => resp.data);
+      }
+    },
+    getGame: {
+     type: GameType,
+     args: { 
+       id: { type: GraphQLString } },
+        resolve(parentValue, args) {
+          return axios.get(`${apiUrl}/games/${args.id}`)
+            .then(resp => resp.data);
+        }
+      },
       getGames: {
         type: new GraphQLList(GameType),
         resolve(parentValue) {
-          return axios.get(`http://localhost:1337/games`)
-            .then(resp => resp.data);
-        }
-      },
-      getPlayer: {
-        type: PlayerType,
-        args: { id: { type: GraphQLString } },
-        resolve(parentValue, args) {
-          return axios.get(`http://localhost:1337/players/${args.id}`)
-            .then(resp => resp.data);
-        }
-      },
-      getPlayers: {
-        type: new GraphQLList(PlayerType),
-        resolve(parentValue) {
-          return axios.get(`http://localhost:1337/players`)
+          return axios.get(`${apiUrl}/games`)
             .then(resp => resp.data);
         }
       },

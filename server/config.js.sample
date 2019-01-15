@@ -1,0 +1,6 @@
+const dbConfig = {
+    dbPath: 'http://localhost:1337'
+  }
+
+module.exports = dbConfig;
+

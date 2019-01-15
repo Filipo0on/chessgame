@@ -16,8 +16,10 @@ class LobbyComponent extends React.Component<any, any> {
           if (loading || !data) { return "loading..."; }
 
           const games = data.getGames
+          const game = data.getGame
           console.log('data', games) // This console log is only here to vew data now, to display how the query works. 
                                     //  It will be removed at a later date.
+          console.log('one game', game)
           return (
             <div>
               <LobbySeeksComponent />
