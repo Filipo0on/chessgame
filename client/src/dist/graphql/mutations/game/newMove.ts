@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const ADD_MOVE_HISTORY = gql`
+export const NEW_MOVE = gql`
 mutation newMove($id: String! $history: [CreateUserInput] ) {
     newMove(id: $id, history: $history ) {
       id

@@ -3,7 +3,7 @@
 import {BehaviorSubject} from 'rxjs';
 const Chess = require('chess.js');
 import { client } from '../index';
-import { ADD_MOVE_HISTORY } from '../dist/graphql/mutations/game/newMove';
+import { NEW_MOVE } from '../dist/graphql/mutations/game/newMove';
 
 const defaultState = {
   fen: '',
@@ -30,7 +30,7 @@ class GameStore {
     public updateDemoMessage(payload:any) {
       this.setState(payload)
     }
-    public mutate() {
+    public mutate = () => {
       const hist: any = subject.value.history[subject.value.history.length-1];
       const history = {
         color: hist.color,
@@ -47,7 +47,7 @@ class GameStore {
         id: "1", 
         history
     },
-      mutation: ADD_MOVE_HISTORY
+      mutation: NEW_MOVE
     })
     .then(result => { console.log('Result: ', result) })
     .catch(error => { console.log('Error: ', error) })
