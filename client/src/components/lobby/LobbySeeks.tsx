@@ -1,23 +1,12 @@
 // tslint:disable:no-console
+// tslint:disable:jsx-no-lambda
 import * as React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo'
 import { GET_GAMES } from '../../dist/graphql/queries/game/getGames';
-import gql from "graphql-tag";
 import { client } from "../../index";
 import { Redirect } from "react-router-dom";
-
-const UPDATE_GAME = gql`
-mutation startGame($id: String!, $gameStarted: Boolean) {
-  startGame(
-    id: $id,
-    gameStarted: $gameStarted
-  ) {
-    id
-    gameStarted
-  }
-}
-`;
+import UPDATE_GAME  from "../../dist/graphql/mutations/lobby/updateGame";
 
 const Container = styled.div `
 grid-column-start: 2;
@@ -82,10 +71,9 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
       
   
     };
-    this.handleClick(this);
+  
 }
   public handleClick = (gameId: any) => {
-    console.log("first", gameId);
     client.mutate({
       variables: {id: gameId, gameStarted: true},
       mutation: UPDATE_GAME
@@ -99,7 +87,7 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
      })
   
 };
-public setGameListState = (gameData: any) => {
+public setGameListState = (gameData: any):any => {
   if(this.state.gameList !== gameData) {
     this.setState({gameList: gameData})
   }
@@ -119,7 +107,7 @@ return (
      <div>{Game.gameType}</div>
      <div>{Game.gameTime}</div>
      <div>{Game.gameAddTime}</div>
-    <JoinBTN onClick={this.handleClick.bind(this, Game.id)}>Join</JoinBTN>
+    <JoinBTN onClick={()=>  this.handleClick(Game.id)}>Join</JoinBTN>
   </ListItemMatch>
 );
 });
