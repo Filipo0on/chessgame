@@ -1,8 +1,23 @@
 // tslint:disable:no-console
 import * as React from 'react';
 import styled from 'styled-components';
-import {CreatedGames} from '../../store/MockData';
-import { NavLink } from 'react-router-dom';
+import { Query } from 'react-apollo'
+import { GET_GAMES } from '../../dist/graphql/queries/game/getGames';
+import gql from "graphql-tag";
+import { client } from "../../index";
+import { Redirect } from "react-router-dom";
+
+const UPDATE_GAME = gql`
+mutation startGame($id: String!, $gameStarted: Boolean) {
+  startGame(
+    id: $id,
+    gameStarted: $gameStarted
+  ) {
+    id
+    gameStarted
+  }
+}
+`;
 
 const Container = styled.div `
 grid-column-start: 2;
@@ -28,6 +43,19 @@ place-items: baseline;
   border-bottom: none;
 }
 `
+const ListItemHeader = styled.div `
+display: grid;
+grid-template-columns: 20% 20% 20% 20% 20%;
+border-bottom: 1px solid black;
+padding: 20px 15px;
+place-items: baseline;
+font-weight: bold;
+font-size: 15px;
+&:last-of-type{
+  border-bottom: none;
+}
+`
+
 const JoinBTN = styled.button `
 justify-self: end;
 padding: 15px;
@@ -40,55 +68,84 @@ border: none;
 }
 `
 interface IStateType  {
-  Player: string;
+    gameList: any;
+    redirect: boolean;
+    id: any;
 }
 class LobbySeeksComponent extends React.Component<any, IStateType> {
   constructor (props: any) {
     super(props)
-    this.state = {       
+    this.state = { 
+      gameList: [], 
+      redirect: false,
+      id: null     
       
-      Player: "kalle",
+  
     };
-    this.handleClick.bind(this);
+    this.handleClick(this);
 }
-// function id from match routar oppoenent till rätt /await/gameID sida
   public handleClick = (gameId: any) => {
     console.log("first", gameId);
-    
-  //  <Route path={match.url + "/await/"} component={}/> 
+    client.mutate({
+      variables: {id: gameId, gameStarted: true},
+      mutation: UPDATE_GAME
+     })
+     .then(() => {
+       this.setState({
+         redirect: true,
+         id: gameId
+
+       })
+     })
+  
+};
+public setGameListState = (gameData: any) => {
+  if(this.state.gameList !== gameData) {
+    this.setState({gameList: gameData})
+  }
 
 };
-  public render() {
-    console.log("created games",CreatedGames)
-    const Games = CreatedGames;
-const ListOfGames = Games.map((Game: any) => {
-  console.log("second", Game);
+public render() {
+  const Games = this.state.gameList;
+  if(this.state.redirect){
+    console.log('GameId', this.state.id)
+    return <Redirect to={"/game/"+this.state.id} />
+  }
+  const ListOfGames = Games.map((Game: any) => {
 return (
   
-  <ListItemMatch key={Game.gameId}>
+  <ListItemMatch key={Game.id}>
     <div>{Game.creator}</div>
      <div>{Game.gameType}</div>
      <div>{Game.gameTime}</div>
      <div>{Game.gameAddTime}</div>
-     <NavLink to={"/await/"+Game.gameId}>
-    <JoinBTN onClick={this.handleClick.bind(this, Game.gameId)}>Join</JoinBTN>
-    </NavLink>
+    <JoinBTN onClick={this.handleClick.bind(this, Game.id)}>Join</JoinBTN>
   </ListItemMatch>
-  
 );
 });
-   
-    return (
-      <Container>
-        <ListItemMatch style={{fontWeight: "bold", fontSize: 15}}>
-    <div>Creator</div>
-    <div>Game Type</div>
-    <div>Time</div>
-    <div>Time Add</div>
-  </ListItemMatch>
-        {ListOfGames}
-      </Container>
-    );
+
+return (
+  <Query query={GET_GAMES} pollInterval={1000}>
+    {({ loading, error, data }) => {
+      if (error) { return <>Something went wrong! {error}</>; }
+      if (loading || !data) { return "loading..."; }
+      const games = data.getGames
+      this.setGameListState(games);                
+      return (
+        <Container>
+          <ListItemHeader>
+      <div>Creator</div>
+      <div>Game Type</div>
+      <div>Time</div>
+      <div>Time Add</div>
+      </ListItemHeader>
+          {ListOfGames}
+        </Container>
+      );
+    }}
+  </Query>
+);
   }
 }
 export default LobbySeeksComponent;
+
