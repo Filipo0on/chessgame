@@ -1,7 +1,7 @@
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLList, GraphQLInt } = require('graphql');
 const axios = require('axios');
 const dbConfig = require('./../../config')
 const MessageType = require('./MessageType')
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 const HistoryType = require('./HistoryType')
 
 const apiUrl = dbConfig.dbPath;
@@ -12,8 +12,8 @@ const GameType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLString },
     gameType: { type: GraphQLString },
-    gameTime: { type: GraphQLString },
-    gameAddTime: { type: GraphQLString },
+    gameTime: { type: GraphQLInt },
+    gameAddTime: { type: GraphQLInt },
     gameStarted:  { type: GraphQLBoolean },
     creator: { type: GraphQLString },
     opponent: { type: GraphQLString },
@@ -24,7 +24,6 @@ const GameType = new GraphQLObjectType({
     messages: { 
       type: new  GraphQLList(MessageType),
       resolve(parentValue, args) {
-        console.log('parentValue : ', parentValue)
         return axios.get(`${apiUrl}/games/${parentValue.messagesId}/messages`)
           .then(res => res.data)
       }
