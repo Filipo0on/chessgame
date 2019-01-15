@@ -68,9 +68,9 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
       gameList: [], 
       redirect: false,
       id: null     
-    };
-  
+    }; 
 }
+  
   public handleClick = (gameId: any) => {
     client.mutate({
       variables: {id: gameId, gameStarted: true},
@@ -81,18 +81,17 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
        this.setState({
          redirect: true,
          id: gameId
-
        })
      })
      .catch(error => console.log("error", error))
-  
 };
+  
 public setGameListState = (gameData: any):any => {
   if(this.state.gameList !== gameData) {
     this.setState({gameList: gameData})
   }
-
 };
+  
 public render() {
   const Games = this.state.gameList;
   if(this.state.redirect){
@@ -100,13 +99,12 @@ public render() {
     return <Redirect to={"/game/"+this.state.id} />
   }
   const ListOfGames = Games.map((Game: any) => {
-return (
-  
-  <ListItemMatch key={Game.id}>
-    <div>{Game.creator}</div>
-     <div>{Game.gameType}</div>
-     <div>{Game.gameTime}</div>
-     <div>{Game.gameAddTime}</div>
+  return (
+    <ListItemMatch key={Game.id}>
+      <div>{Game.creator}</div>
+      <div>{Game.gameType}</div>
+      <div>{Game.gameTime}</div>
+      <div>{Game.gameAddTime}</div>
     <JoinBTN onClick={()=>  this.handleClick(Game.id)}>Join</JoinBTN>
   </ListItemMatch>
 );

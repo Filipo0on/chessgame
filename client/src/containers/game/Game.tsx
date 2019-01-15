@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import GameBoard from "src/components/game/GameBoard";
 import GameChat from "src/components/game/GameChat";
 import GameInfo from "src/components/game/GameInfo";
@@ -13,7 +12,6 @@ import {
   Small
 } from "../../styles/game/Game";
 import gameStore from "src/store/GameStore";
-
 import "../../components/game/game.css";
 
 // this file should get props, creator, oponent, game id, time stuff from lobby.
