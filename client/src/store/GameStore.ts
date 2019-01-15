@@ -2,15 +2,16 @@
 // tslint:disable:no-var-requires
 import {BehaviorSubject} from 'rxjs';
 const Chess = require('chess.js');
+import { client } from '../index';
+import { ADD_MOVE_HISTORY } from '../dist/graphql/mutations/game/newMove';
 
 const defaultState = {
   fen: '',
-  history: null,
+  history: [],
   checkmate: false
 };
 
 const subject = new BehaviorSubject(defaultState);
-
 class GameStore {
   public chess = new Chess()
     constructor() {
@@ -29,6 +30,28 @@ class GameStore {
     public updateDemoMessage(payload:any) {
       this.setState(payload)
     }
+    public mutate() {
+      const hist: any = subject.value.history[subject.value.history.length-1];
+      const history = {
+        color: hist.color,
+        from: hist.from,
+        to: hist.to,
+        piece: hist.piece,
+        flags: hist.flags,
+        san: hist.san,
+        captured: hist.captured,
+        fen: subject.value.fen
+    }
+    client.mutate({
+      variables: { 
+        id: "1", 
+        history
+    },
+      mutation: ADD_MOVE_HISTORY
+    })
+    .then(result => { console.log('Result: ', result) })
+    .catch(error => { console.log('Error: ', error) })
+    }
     public move = (move: any) => {
       this.chess.move(move)
       if(this.chess.in_checkmate()) {
@@ -37,17 +60,15 @@ class GameStore {
             fen: this.chess.fen(),
             checkmate: true
           })
-      } else if(this.chess.in_draw()) {
-          this.chess.game_over()
-      } else if(this.chess.in_stalemate()) {
-          this.chess.game_over()
-      } else if(this.chess.insufficient_material()) {
+          this.mutate()
+      } else if(this.chess.in_draw()  || this.chess.in_stalemate() || this.chess.insufficient_material()) {
           this.chess.game_over()
       } else {
         this.setState({
           fen: this.chess.fen(),
           history: this.chess.history({ verbose: true })
         })
+        this.mutate()
       }
     }
 }
