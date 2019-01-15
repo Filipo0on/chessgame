@@ -104,7 +104,7 @@ public render() {
 return (
   
   <ListItemMatch key={Game.id}>
-    <div>{Game.creator}</div>
+    <div>{Game.isWhite}</div>
      <div>{Game.gameType}</div>
      <div>{Game.gameTime}</div>
      <div>{Game.gameAddTime}</div>

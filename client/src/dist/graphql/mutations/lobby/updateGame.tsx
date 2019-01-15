@@ -13,7 +13,6 @@ mutation startGame($id: String!, $gameStarted: Boolean) {
     gameType
     gameAddTime
     gameTime
-
   }
 }
 `;
