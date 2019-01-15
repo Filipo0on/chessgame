@@ -94,6 +94,7 @@ public setGameListState = (gameData: any):any => {
 
 };
 public render() {
+
   const Games = this.state.gameList;
   if(this.state.redirect){
     console.log('GameId', this.state.id)
@@ -133,6 +134,7 @@ return (
     }}
   </Query>
 );
+
   }
 }
 export default LobbySeeksComponent;

@@ -12,9 +12,9 @@ class LobbyComponent extends React.Component<any, any> {
     return (
       <Query query={GET_GAMES}>
         {({ loading, error, data }) => {
-          if (error) { return <>Something went wrong! {error}</>; }
+          if (error) { return <>Something went wrong! {JSON.stringify(error)}</>; }
           if (loading || !data) { return "loading..."; }
-          
+            
           return (
             <div>
               <LobbyCreateGameComponent />

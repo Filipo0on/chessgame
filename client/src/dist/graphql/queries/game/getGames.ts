@@ -11,7 +11,6 @@ export const GET_GAMES = gql`
       creator
       opponent
       isWhite
-      fen
       history {
         color
         from
