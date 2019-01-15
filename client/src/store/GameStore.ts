@@ -30,7 +30,7 @@ class GameStore {
     public updateDemoMessage(payload:any) {
       this.setState(payload)
     }
-    public mutate = () => {
+    public makeMove = () => {
       const hist: any = subject.value.history[subject.value.history.length-1];
       const history = {
         color: hist.color,
@@ -60,7 +60,7 @@ class GameStore {
             fen: this.chess.fen(),
             checkmate: true
           })
-          this.mutate()
+          this.makeMove()
       } else if(this.chess.in_draw()  || this.chess.in_stalemate() || this.chess.insufficient_material()) {
           this.chess.game_over()
       } else {
@@ -68,7 +68,7 @@ class GameStore {
           fen: this.chess.fen(),
           history: this.chess.history({ verbose: true })
         })
-        this.mutate()
+        this.makeMove()
       }
     }
 }
