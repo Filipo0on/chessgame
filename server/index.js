@@ -3,16 +3,8 @@ const expressGraphQL = require('express-graphql');
 const cors = require('cors')
 const schema = require('./schema'); 
 const session = require('express-session');
-const parseurl = require('parseurl');
-
-// Start server
-/*
-    1st terminal: json-server -p 1337 --watch db.json
-    2nd terminal: npm run dev
-*/ 
 
 const app = express();
-// lätt till session efter cors.
 app.use(session({
     secret: 'moms meatballs',
     resave: false,

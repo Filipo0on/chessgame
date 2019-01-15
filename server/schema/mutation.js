@@ -16,10 +16,17 @@ const mutation = new GraphQLObjectType({
       type: GameType,
       args: { 
         id: { type: new GraphQLNonNull(GraphQLString) },
-        gameStarted: { type: GraphQLBoolean }
+        gameStarted: { type: GraphQLBoolean },
+        isBlack: { type: GraphQLString}
       },
       resolve(parentValue, args, request) {
-        return axios.patch(`http://localhost:1337/games/${args.id}`, args)
+        if (!request.session.userId ) {
+          request.session.userId = getRandomInt(1000).toString()
+        }
+       let userId = request.session.userId;
+       args.isBlack = userId;
+        return axios.patch(`${apiUrl}/games/${args.id}`, args)
+
           .then(res => res.data)
       }
     },
