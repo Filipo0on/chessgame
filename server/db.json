@@ -23,6 +23,12 @@
     ],
     "games": [{
             "id": "1",
+            "gameType": "Classic",
+            "gameTime": "5",
+            "gameAddTime": "10",
+            "gameStarted": false,
+            "creatorId": "1",
+            "opponentId": "1"
             "messagesId": "1",
             "history": [{
                     "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
@@ -52,6 +58,7 @@
                     "san": "some san"
                 }
             ]
+
         },
         {
             "id": "2",
@@ -70,10 +77,13 @@
             "gameTime": "10",
             "gameAddTime": "5",
             "gameStarted": false,
+            "creatorId": "3",
+            "opponentId": "3"
             "creator": "Anonymous1355",
             "opponent": "Anonumous4753",
             "messagesId": "3",
             "isWhite": ""
+
         }
     ]
 }
