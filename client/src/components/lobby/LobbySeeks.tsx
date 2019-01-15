@@ -68,8 +68,6 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
       gameList: [], 
       redirect: false,
       id: null     
-      
-  
     };
   
 }
@@ -78,6 +76,7 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
       variables: {id: gameId, gameStarted: true},
       mutation: UPDATE_GAME
      })
+     .then(result => console.log("success", result)) 
      .then(() => {
        this.setState({
          redirect: true,
@@ -85,6 +84,7 @@ class LobbySeeksComponent extends React.Component<any, IStateType> {
 
        })
      })
+     .catch(error => console.log("error", error))
   
 };
 public setGameListState = (gameData: any):any => {

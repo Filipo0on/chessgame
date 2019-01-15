@@ -8,6 +8,12 @@ mutation startGame($id: String!, $gameStarted: Boolean) {
   ) {
     id
     gameStarted
+    isBlack
+    isWhite
+    gameType
+    gameAddTime
+    gameTime
+
   }
 }
 `;

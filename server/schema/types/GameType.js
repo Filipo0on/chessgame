@@ -12,6 +12,7 @@ const GameType = new GraphQLObjectType({
       creator: { type: GraphQLString },
       opponent: { type: GraphQLString },
       isWhite: { type: GraphQLString },
+      isBlack: { type: GraphQLString },
       fen: { type: GraphQLString },
       history: { type: GraphQLList(HistoryType) }
     })
