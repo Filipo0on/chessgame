@@ -8,8 +8,7 @@ export const GET_GAMES = gql`
       gameTime
       gameAddTime
       gameStarted
-      creator
-      opponent
+      isBlack
       isWhite
       history {
         color
