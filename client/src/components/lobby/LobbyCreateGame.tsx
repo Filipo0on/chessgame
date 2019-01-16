@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import SelectBase from 'react-select';
 import { ADD_GAME } from "../../dist/graphql/mutations/lobby/addGames";
 import { client } from '../../index';
-
+import { Redirect } from "react-router-dom";
 const Container = styled.div`
 grid-column-start: 1;
 grid-column-end: 2;
@@ -84,11 +84,17 @@ let gameValue = {
 };
 interface IState {
   popup:boolean,
+  redirect: boolean,
+  id: any,
 }
 
 class LobbyCreateGameComponent extends React.Component<any, IState> {
   public state = {
     popup: false,
+    redirect: false,
+    id: {
+      addGame: { id: 3,}
+    },
   }
 
   public handleChange(data:any) {
@@ -113,11 +119,27 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
       },
       mutation: ADD_GAME
     })
-    .then(result => {console.log('success', result)})
+    .then(result => {     
+      this.setState({
+        redirect: true,
+        id: result.data,
+      })
+    })
     .catch(error => {console.log('error', error)})
   }
 
   public render() {
+
+
+
+    if(this.state.redirect){
+      console.log('GameId', this.state.id)
+      return <Redirect to={"/await/"+this.state.id.addGame.id} />
+    }
+
+
+
+
     const gameTypes = [
       { value : 'Classic', label: 'Classic', type:'gameType' }
     ];
@@ -135,7 +157,7 @@ class LobbyCreateGameComponent extends React.Component<any, IState> {
       { value: 15, label:'15 seconds', type:'gameAddTime' },
       { value: 25, label:'25 seconds', type:'gameAddTime' }
     ];
-
+     console.log('state', this.state);
     return (
         <Container>
         <HeaderText>AVAILABLE GAMES</HeaderText>
