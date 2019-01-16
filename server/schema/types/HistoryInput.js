@@ -9,7 +9,8 @@ const HistoryInput = new GraphQLInputObjectType({
       to: { type: GraphQLString },
       flags: { type: GraphQLString },
       piece:  { type: GraphQLString },
-      san: { type: GraphQLString }
+      san: { type: GraphQLString },
+      captured: { type: GraphQLString }
     }),
   });
 
