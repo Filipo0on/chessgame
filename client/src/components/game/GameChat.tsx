@@ -80,10 +80,16 @@ class GameChat extends React.Component<any, any> {
 
   public onSubmitChat = (event: any) => {
     if (event.key === "Enter") {
-
+      console.log('input', this.state.inputValue)
       client.mutate({
-          variables: { message: "YAAAAY!", user: "2", gameId: "1", createdAt: moment(new Date()).format("HH:mm:ss DD MMM, YYYY") },
+          variables: { 
+            message: this.state.inputValue, 
+            user: "2", 
+            gameId: "1", 
+            createdAt: moment(new Date()).format("HH:mm:ss DD MMM, YYYY") 
+          },
           mutation: ADD_MESSAGE,
+          
       })
       .then(result => { console.log('success', result) })
       .catch(error => { console.log(error) });

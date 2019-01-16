@@ -1,79 +1,26 @@
 {
-    "messages": [{
-            "id": "1",
-            "gameId": "1",
-            "user": "1",
-            "message": "Hello",
-            "createdAt": "13:40:01 2019-01-11"
-        },
-        {
-            "id": "2",
-            "gameId": "1",
-            "user": "2",
-            "message": "Hello",
-            "createdAt": "13:40:05 2019-01-11"
-        },
-        {
-            "id": "3",
-            "gameId": "1",
-            "user": "1",
-            "message": "May the best player win!",
-            "createdAt": "13:40:10 2019-01-11"
-        }
-    ],
-    "games": [{
-            "id": "1",
-            "messagesId": "1",
-            "history": [{
-                    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-                    "color": "w",
-                    "from": "e2",
-                    "to": "e4",
-                    "flags": "something",
-                    "piece": "q",
-                    "san": "e8"
-                },
-                {
-                    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-                    "color": "b",
-                    "from": "f2",
-                    "to": "f4",
-                    "flags": "something",
-                    "piece": "k",
-                    "san": "e3"
-                },
-                {
-                    "color": "b",
-                    "fen": "feeeeeen",
-                    "from": "1",
-                    "to": "2",
-                    "flags": "flag",
-                    "piece": "q",
-                    "san": "some san"
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "gameType": "Classic",
-            "gameTime": "10",
-            "gameAddTime": "5",
-            "gameStarted": false,
-            "creator": "Anonymous1355",
-            "opponent": "Anonumous4753",
-            "messagesId": "2",
-            "isWhite": ""
-        },
-        {
-            "id": "3",
-            "gameType": "Classic",
-            "gameTime": "10",
-            "gameAddTime": "5",
-            "gameStarted": false,
-            "creator": "Anonymous1355",
-            "opponent": "Anonumous4753",
-            "messagesId": "3",
-            "isWhite": ""
-        }
-    ]
+  "messages": [
+    {
+      "message": "YAAAAY!",
+      "user": "2",
+      "gameId": "1",
+      "createdAt": "08:27:50 16 Jan, 2019",
+      "id": 1
+    },
+    {
+      "message": "YAAAAY!",
+      "user": "2",
+      "gameId": "1",
+      "createdAt": "08:27:52 16 Jan, 2019",
+      "id": 2
+    },
+    {
+      "message": "YAAAAY!",
+      "user": "2",
+      "gameId": "1",
+      "createdAt": "08:27:52 16 Jan, 2019",
+      "id": 3
+    }
+  ],
+  "games": []
 }
