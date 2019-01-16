@@ -80,7 +80,6 @@ class GameChat extends React.Component<any, any> {
 
   public onSubmitChat = (event: any) => {
     if (event.key === "Enter") {
-      console.log('input', this.state.inputValue)
       client.mutate({
           variables: { 
             message: this.state.inputValue, 
@@ -89,32 +88,42 @@ class GameChat extends React.Component<any, any> {
             createdAt: moment(new Date()).format("HH:mm:ss DD MMM, YYYY") 
           },
           mutation: ADD_MESSAGE,
+          refetchQueries: [{
+            query: GET_MESSAGES
+          }]
           
       })
-      .then(result => { console.log('success', result) })
+      .then(result => { this.setState({ inputValue: ""}) })
       .catch(error => { console.log(error) });
-      // return this.setState((prevState: any) => ({
-      //   chatMessages: prevState.chatMessages.concat({
-      //     text: this.state.inputValue,
-      //     date: new Date()
-      //   }),
-      //   inputValue: ""
-      // }));
     }
   };
 
   public handleInputValue = (event: any) =>
     this.setState({ inputValue: event.target.value });
 
-  public handleQuickMsg = (text: string) =>
-    this.setState((prevState: any) => ({
-      chatMessages: prevState.chatMessages.concat({ text, date: new Date() })
-    }));
+  public handleQuickMsg = (text: string) => {
+    client.mutate({
+      variables: { 
+        message: text, 
+        user: "2", 
+        gameId: "1", 
+        createdAt: moment(new Date()).format("HH:mm:ss DD MMM, YYYY") 
+      },
+      mutation: ADD_MESSAGE,
+      refetchQueries: [{
+        query: GET_MESSAGES
+      }]
+    })
+    .then(result => { this.setState({ inputValue: ""}) })
+    .catch(error => { console.log(error) });
+  }
 
   public render() {
     return (
-      <Query query={GET_MESSAGES}>
-        {({ loading, error, data }) => {
+      <Query 
+        query={GET_MESSAGES}
+      >
+        {({ loading, error, data, refetch }) => {
           if (error) {
             return <>Something went wrong! {error}</>;
           }
@@ -151,6 +160,7 @@ class GameChat extends React.Component<any, any> {
                   type="text"
                   value={this.state.inputValue}
                   onChange={this.handleInputValue}
+                  // tslint:disable-next-line:jsx-no-lambda
                   onKeyPress={this.onSubmitChat}
                 />
               </ChatEventContainer>
