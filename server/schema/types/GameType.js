@@ -24,7 +24,7 @@ const GameType = new GraphQLObjectType({
     messages: { 
       type: new  GraphQLList(MessageType),
       resolve(parentValue, args) {
-        return axios.get(`${apiUrl}/games/${parentValue.messagesId}/messages`)
+        return axios.get(`${apiUrl}/games/${parentValue.id}/messages`)
           .then(res => res.data)
       }
     }
