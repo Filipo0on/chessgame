@@ -7,7 +7,6 @@ import GameStore from '../../store/GameStore';
 import 'react-chessground/dist/styles/chessground.css'
     
 class GameBoard extends React.Component<any, any> {
-  // public chess = new Chess()
   public constructor(props: any) {
     super(props);
     this.state = {
@@ -22,7 +21,6 @@ class GameBoard extends React.Component<any, any> {
         fen: state.fen
       })
     })
-      // something
   }
   public move = (from: string, to: string) => {
     GameStore.move({ from, to })
@@ -34,13 +32,13 @@ class GameBoard extends React.Component<any, any> {
   }
   public render() {
     return (
-      <GameBoardStyles>
-        {this.state.checkmate ? "Game Over" : false}
-        <Chessground name="chess" 
-          fen={this.state.fen}
-          onMove={this.move} 
-        />
-      </GameBoardStyles>
+        <GameBoardStyles>
+          {this.state.checkmate ? "Game Over" : false}
+          <Chessground name="chess" 
+            fen={this.state.fen}
+            onMove={this.move} 
+          />
+        </GameBoardStyles>
     );
   }
 }

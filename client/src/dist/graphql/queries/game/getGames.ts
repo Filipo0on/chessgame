@@ -8,21 +8,16 @@ export const GET_GAMES = gql`
       gameTime
       gameAddTime
       gameStarted
-      creator
-      opponent
+      isBlack
       isWhite
-      fen
       history {
         color
         from
         to
         piece
         san
+        fen
       }
-    }
-    getGame(id: "1"){
-      id
-      creator
     }
   }
 `;

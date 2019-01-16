@@ -1,26 +1,4 @@
 {
-  "messages": [
-    {
-      "message": "YAAAAY!",
-      "user": "2",
-      "gameId": "1",
-      "createdAt": "08:27:50 16 Jan, 2019",
-      "id": 1
-    },
-    {
-      "message": "YAAAAY!",
-      "user": "2",
-      "gameId": "1",
-      "createdAt": "08:27:52 16 Jan, 2019",
-      "id": 2
-    },
-    {
-      "message": "YAAAAY!",
-      "user": "2",
-      "gameId": "1",
-      "createdAt": "08:27:52 16 Jan, 2019",
-      "id": 3
-    }
-  ],
-  "games": []
+    "messages": [],
+    "games": []
 }
