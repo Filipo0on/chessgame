@@ -32,13 +32,13 @@ class GameBoard extends React.Component<any, any> {
   }
   public render() {
     return (
-        <GameBoardStyles>
-          {this.state.checkmate ? "Game Over" : false}
-          <Chessground name="chess" 
-            fen={this.state.fen}
-            onMove={this.move} 
-          />
-        </GameBoardStyles>
+            <GameBoardStyles>
+              {this.state.checkmate ? "Game Over" : false}
+              <Chessground name="chess" 
+                fen={this.state.fen}
+                onMove={this.move} 
+              />
+            </GameBoardStyles>
     );
   }
 }

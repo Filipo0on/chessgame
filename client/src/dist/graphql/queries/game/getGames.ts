@@ -11,18 +11,26 @@ export const GET_GAMES = gql`
       creator
       opponent
       isWhite
-      fen
       history {
         color
         from
         to
         piece
         san
+        fen
       }
     }
     getGame(id: "1"){
       id
-      creator
+      history {
+        color
+        from
+        to
+        piece
+        san
+        fen
+        captured
+      }
     }
   }
 `;

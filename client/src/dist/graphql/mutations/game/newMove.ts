@@ -12,6 +12,7 @@ mutation newMove($id: String! $history: [CreateUserInput] ) {
         flags
         san
         fen
+        captured
       }
     }
   }

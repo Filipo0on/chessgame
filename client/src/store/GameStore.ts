@@ -58,6 +58,7 @@ class GameStore {
           this.chess.game_over()
           this.setState({
             fen: this.chess.fen(),
+            history: this.chess.history({ verbose: true }),
             checkmate: true
           })
           this.makeMove()

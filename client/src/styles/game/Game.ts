@@ -75,3 +75,71 @@ export const GameChatH3 = styled.h3`
     margin: 0;
     letter-spacing: 1px;
 `;
+export const GamePlayerHistoryDiv = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const GamePlayerHistoryPlayerClock = styled.div`
+    height: 12%;
+    width: 85%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 275%;
+`;
+
+export const GamePlayerHistoryPlayer = styled.p`
+    height: 8%;
+    width: 85%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    padding: 15px;
+`;
+
+export const GamePlayerHistory = styled.div`
+    min-height: 36%;
+    max-height: 36%;
+    width: 85%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    overflow-y: auto;
+    word-break: break-all;
+`;
+
+export const GamePlayerHistoryPlayers = styled.div`
+    width: 45%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const GamePlayerHistoryPlayersMove = styled.p`
+    margin: 0;
+    padding: 4px;
+`;
+
+export const GamePlayerHistoryRounds = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    height: 100%;
+    width: 100%;
+    text-align: center;
+`;
+
+export const GamePlayerRound = styled.p`
+    margin: 0;
+    padding: 4px;
+    background-color: gainsboro;
+`;
