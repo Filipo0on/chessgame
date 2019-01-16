@@ -122,14 +122,11 @@ class GameChat extends React.Component<any, any> {
     return (
       <Query 
         query={GET_MESSAGES}
+
       >
         {({ loading, error, data, refetch }) => {
-          if (error) {
-            return <>Something went wrong! {error}</>;
-          }
-          if (loading || !data) {
-            return "loading...";
-          }
+          if (error) { return <>Something went wrong! {error}</>; }
+          if (loading || !data) { return "loading..."; }
 
           const messages = data.getMessages;
 
